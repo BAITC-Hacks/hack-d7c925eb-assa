@@ -30,6 +30,15 @@ app.add_middleware(
 app.include_router(router)
 
 
+@app.middleware('http')
+async def private_responses(request, call_next):
+    response = await call_next(request)
+    response.headers['Cache-Control'] = 'no-store'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['Referrer-Policy'] = 'no-referrer'
+    return response
+
+
 @app.get("/")
 def root() -> dict[str, str]:
     return {"name": "Career Quest API", "docs": "/docs"}
