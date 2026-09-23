@@ -26,6 +26,10 @@ class Session:
     event_format: str | None = None
     requests: list[float] = field(default_factory=list)
     busy: bool = False
+    conversation_id: str = field(default_factory=lambda: secrets.token_urlsafe(24))
+    turns: list[dict] = field(default_factory=list)
+    selected_events: list[str] = field(default_factory=list)
+    last_kind: str | None = None
 
 
 SESSIONS: dict[str, Session] = {}

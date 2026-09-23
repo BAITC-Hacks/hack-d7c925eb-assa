@@ -88,7 +88,9 @@ def optional_int(value: str) -> int | None:
     return int(value) if value else None
 
 
-def import_dataset() -> dict[str, int]:
+def import_dataset(*, reset: bool = False) -> dict[str, int]:
+    if DB_PATH.exists() and not reset:
+        raise ValueError('База уже существует. Для добавления используйте --append; для разрушительного сброса --reset.')
     skills_doc = load_json("skills.json")
     employees_doc = load_json("employees.json")
     events_doc = load_json("events.json")
@@ -183,7 +185,88 @@ def import_dataset() -> dict[str, int]:
     }
 
 
-if __name__ == "__main__":
-    counts = import_dataset()
-    print(f"Created {DB_PATH}")
-    print("Imported " + ", ".join(f"{key}={value}" for key, value in counts.items()))
+def append_dataset(folder: Path) -> dict[str, int]:
+    """Add profiles and history atomically. Existing profiles and progress are immutable here."""
+    from datetime import date
+    from contextlib import closing
+    employees_path = folder / 'employees.json'
+    history_path = folder / 'activity_history.csv'
+    employees = json.loads(employees_path.read_text(encoding='utf-8-sig'))['employees'] if employees_path.exists() else []
+    with history_path.open(encoding='utf-8-sig', newline='') if history_path.exists() else __import__('io').StringIO('') as f:
+        history = list(csv.DictReader(f))
+    if not employees_path.exists() and not history_path.exists():
+        raise ValueError('Нужен employees.json или activity_history.csv')
+    errors = []
+    counts = {'employees_added': 0, 'history_added': 0, 'duplicates': 0}
+    with closing(sqlite3.connect(DB_PATH)) as db, db:
+        db.execute('BEGIN IMMEDIATE')
+        skills = {r[0] for r in db.execute('SELECT skill_id FROM skills')}
+        events = {r[0] for r in db.execute('SELECT event_id FROM events')}
+        profiles = set(db.execute('SELECT DISTINCT role, grade FROM role_skill_requirements'))
+        ids = {r[0] for r in db.execute('SELECT employee_id FROM employees')}
+        for index, e in enumerate(employees):
+            try:
+                import re
+                assert re.fullmatch(r'E\d{4,8}', e['employee_id']), 'неверный employee_id'
+                assert all(isinstance(e[k], str) and e[k].strip() for k in ('full_name', 'department', 'role', 'grade', 'work_format', 'preferred_language')), 'пустое поле профиля'
+                date.fromisoformat(e['last_review_date'])
+                assert (e['role'], e['grade']) in profiles, 'неизвестная роль/грейд'
+                assert type(e['tenure_months']) is int and e['tenure_months'] >= 0, 'неверный стаж'
+                for skill, level in e.get('skills', {}).items():
+                    assert skill in skills and type(level) is int and 0 <= level <= 5, 'неверный навык/уровень'
+                goal = e.get('career_goal')
+                if goal:
+                    assert (goal['target_role'], goal['target_grade']) in profiles, 'неизвестная цель'
+                values = (e['employee_id'], e['full_name'], e['department'], e['role'], e['grade'], e.get('manager_id'), e['tenure_months'], e['work_format'], e['preferred_language'], e['last_review_date'])
+                old = db.execute('SELECT * FROM employees WHERE employee_id=?', (e['employee_id'],)).fetchone()
+                if old:
+                    # A repeated import must not reset a goal selected in the application.
+                    assert old == values and dict(db.execute('SELECT skill_id, level FROM employee_skills WHERE employee_id=?', (e['employee_id'],))) == e.get('skills', {}), 'профиль с таким ID уже существует с другими данными'
+                    counts['duplicates'] += 1
+                    continue
+                db.execute('INSERT INTO employees VALUES (?,?,?,?,?,?,?,?,?,?)', values)
+                db.executemany('INSERT INTO employee_skills VALUES (?,?,?)', [(e['employee_id'], k, v) for k,v in e.get('skills', {}).items()])
+                if goal:
+                    db.execute('INSERT INTO career_goals VALUES (?,?,?)', (e['employee_id'], goal['target_role'], goal['target_grade']))
+                ids.add(e['employee_id'])
+                counts['employees_added'] += 1
+            except (AssertionError, KeyError, ValueError, TypeError, sqlite3.IntegrityError) as exc:
+                errors.append(f'employees[{index}]: {exc}')
+        for index, r in enumerate(history):
+            try:
+                assert r['record_id'] and len(r['record_id']) <= 100, 'неверный record_id'
+                assert r['employee_id'] in ids and r['event_id'] in events, 'неизвестный профиль или событие'
+                date.fromisoformat(r['date'])
+                if r['due_date']:
+                    date.fromisoformat(r['due_date'])
+                assert r['status'] in {'completed', 'in_progress', 'skipped', 'declined', 'registered', 'no_show', 'assigned', 'not_started', 'overdue', 'dropped'}, 'неверный статус'
+                pct, score, rating = int(r['completion_pct']), optional_int(r['score']), optional_int(r['feedback_rating'])
+                assert 0 <= pct <= 100 and (score is None or 0 <= score <= 100) and (rating is None or 1 <= rating <= 5), 'неверный диапазон'
+                assert r['status'] != 'completed' or pct == 100, 'завершение должно быть 100%'
+                values = (r['record_id'], r['employee_id'], r['event_id'], r['date'], r['due_date'] or None, r['status'], pct, score, rating, r['assigned_by'])
+                old = db.execute('SELECT * FROM activity_records WHERE record_id=?', (r['record_id'],)).fetchone()
+                if old:
+                    assert old == values, 'record_id уже занят другой записью'
+                    counts['duplicates'] += 1
+                else:
+                    db.execute('INSERT INTO activity_records VALUES (?,?,?,?,?,?,?,?,?,?)', values)
+                    counts['history_added'] += 1
+            except (AssertionError, KeyError, ValueError, TypeError, sqlite3.IntegrityError) as exc:
+                errors.append(f'activity_history[{index + 2}]: {exc}')
+        if errors:
+            raise ValueError('Импорт отменён; база не изменена:\n' + '\n'.join(errors))
+    return counts
+
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='Создание или безопасное добавление данных Career Quest')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--append', type=Path, help='Папка с employees.json и/или activity_history.csv')
+    group.add_argument('--reset', action='store_true', help='Удалить существующие данные и прогресс')
+    args = parser.parse_args()
+    try:
+        counts = append_dataset(args.append) if args.append else import_dataset(reset=args.reset)
+        print(json.dumps(counts, ensure_ascii=False))
+    except (ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+        parser.exit(1, str(exc) + '\n')
