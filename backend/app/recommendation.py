@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import sqlite3
 from collections import Counter
-from datetime import date
 from typing import Any
 
 
@@ -21,24 +20,30 @@ def target_for(connection: sqlite3.Connection, employee: sqlite3.Row) -> dict[st
 
 
 def projected_gains(connection: sqlite3.Connection, employee_id: str) -> dict[str, float]:
+    initial = {r['skill_id']: float(r['level']) for r in connection.execute(
+        'SELECT skill_id, level FROM employee_skills WHERE employee_id = ?', (employee_id,))}
+    levels = dict(initial)
     rows = connection.execute(
         """
-        SELECT g.skill_id, SUM(g.gain) AS gain
+        SELECT g.skill_id, g.gain, g.max_level
         FROM activity_records a
         JOIN event_skill_gains g ON g.event_id = a.event_id
         WHERE a.employee_id = ? AND a.status = 'completed' AND a.assigned_by = 'career_quest'
-        GROUP BY g.skill_id
+        ORDER BY a.date, a.rowid, g.skill_id
         """,
         (employee_id,),
     ).fetchall()
-    return {row["skill_id"]: float(row["gain"]) for row in rows}
+    for row in rows:
+        current = levels.get(row['skill_id'], 0)
+        levels[row['skill_id']] = max(current, min(5, row['max_level'], current + row['gain']))
+    return {key: value - initial.get(key, 0) for key, value in levels.items()}
 
 
 def build_gaps(connection: sqlite3.Connection, employee: sqlite3.Row, target: dict[str, str]) -> list[dict[str, Any]]:
     gains = projected_gains(connection, employee["employee_id"])
     rows = connection.execute(
         """
-        SELECT r.skill_id, s.name, s.type, s.category, r.required_level, r.is_critical,
+        SELECT r.skill_id, s.name, s.type, s.category, s.description, r.required_level, r.is_critical,
                COALESCE(es.level, 0) AS current_level
         FROM role_skill_requirements r
         JOIN skills s ON s.skill_id = r.skill_id
@@ -53,12 +58,11 @@ def build_gaps(connection: sqlite3.Connection, employee: sqlite3.Row, target: di
         confirmed = int(row["current_level"])
         expected = min(5.0, confirmed + gains.get(row["skill_id"], 0))
         required = int(row["required_level"])
-        if confirmed >= required and expected <= confirmed:
-            continue
         gaps.append(
             {
                 "skill_id": row["skill_id"], "name": row["name"], "type": row["type"],
                 "category": row["category"], "current_level": confirmed,
+                "description": row["description"],
                 "expected_level": round(expected, 1), "required_level": required,
                 "gap": max(0, required - confirmed),
                 "expected_gap": round(max(0, required - expected), 1),
@@ -87,7 +91,10 @@ def _history_affinity(connection: sqlite3.Connection, employee_id: str, event_ty
     return round(min(20, 8 * type_rate + 7 * format_rate + 5 * rating_factor))
 
 
-def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dict[str, str], gaps: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dict[str, str], gaps: list[dict[str, Any]], *, limit: int | None = 3, max_minutes: int | None = None, event_format: str | None = None, exclusions: Counter | None = None) -> list[dict[str, Any]]:
+    def reject(reason: str) -> None:
+        if exclusions is not None:
+            exclusions[reason] += 1
     actionable = {gap["skill_id"]: gap for gap in gaps if gap["expected_gap"] > 0}
     completed = {
         row[0] for row in connection.execute(
@@ -111,12 +118,20 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
     result = []
     total_gap = sum(gap["expected_gap"] for gap in actionable.values()) or 1
     for event in candidates:
+        if max_minutes is not None and event['duration_hours'] * 60 > max_minutes:
+            reject('Не укладывается в доступное время')
+            continue
+        if event_format and event['format'] != event_format:
+            reject('Не подходит выбранный формат')
+            continue
         if event["event_id"] in completed and event["event_id"] != RECURRING_EVENT_ID:
+            reject('Активность уже завершена')
             continue
         prerequisites = connection.execute(
             "SELECT skill_id, required_level FROM event_prerequisites WHERE event_id = ?", (event["event_id"],)
         ).fetchall()
         if any(employee_skills.get(row["skill_id"], 0) < row["required_level"] for row in prerequisites):
+            reject('Не выполнены предварительные требования')
             continue
         sessions = [
             row[0] for row in connection.execute(
@@ -125,6 +140,7 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
             )
         ]
         if event["format"] != "self_paced" and not sessions:
+            reject('Нет доступной сессии')
             continue
         covered = []
         useful_gain = 0.0
@@ -140,6 +156,7 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
                 useful_gain += useful
                 covered.append({"skill_id": gain["skill_id"], "name": gain["name"], "gain": round(useful, 1), "critical": gap["critical"]})
         if not covered:
+            reject('Не сокращает оставшийся разрыв с учётом предела навыка')
             continue
 
         critical = sum(item["critical"] for item in covered)
@@ -156,17 +173,26 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
         }
         score = sum(components.values())
         names = ", ".join(item["name"] for item in covered)
-        explanation = f"Развивает {names} для цели {target['role']} · {target['grade']}. Ожидаемое сокращение дефицита: {useful_gain:g} уровня."
+        evidence = [
+            f"Цель: {target['role']} · {target['grade']}.",
+            'Навыки: ' + '; '.join(f"{c['name']} {actionable[c['skill_id']]['expected_level']:g}/{actionable[c['skill_id']]['required_level']}" + (' — критический' if c['critical'] else '') for c in covered) + '.',
+            f"Соответствие истории: {history}/20; учитываются завершения и пропуски этого типа и формата, а также отзывы.",
+            f"Ожидаемое сокращение дефицита: {useful_gain:g}. Длительность: {duration:g} ч.",
+        ]
+        explanation = ' '.join(evidence)
         result.append(
             {
                 "event_id": event["event_id"], "title": event["title"], "description": event["description"],
                 "type": event["type"], "format": event["format"], "duration_hours": duration,
                 "next_session": sessions[0] if sessions else None, "score": score,
                 "score_label": "Recommendation Score", "components": components,
-                "covered_skills": covered, "explanation": explanation,
+                "covered_skills": covered, "explanation": explanation, "factors": evidence,
             }
         )
-    return sorted(result, key=lambda item: (-item["score"], item["duration_hours"], item["event_id"]))[:3]
+    if not candidates:
+        reject('В каталоге нет добровольных событий для этой роли и грейда')
+    ordered = sorted(result, key=lambda item: (-item["score"], item["duration_hours"], item["event_id"]))
+    return ordered if limit is None else ordered[:limit]
 
 
 def career_payload(connection: sqlite3.Connection, employee_id: str) -> dict[str, Any] | None:
@@ -186,25 +212,42 @@ def career_payload(connection: sqlite3.Connection, employee_id: str) -> dict[str
     return {
         "employee": dict(employee), "target": target, "gaps": gaps,
         "recommendations": recommendations, "progress": progress,
+        "snapshot_date": SNAPSHOT_DATE,
+        "history": [dict(row) for row in connection.execute(
+            '''SELECT a.record_id, a.event_id, e.title, a.date, a.status, a.completion_pct,
+                      a.assigned_by FROM activity_records a JOIN events e ON e.event_id=a.event_id
+               WHERE a.employee_id=? ORDER BY a.date DESC, a.rowid DESC LIMIT 30''', (employee_id,))],
+        "achievements": {"quests_completed": connection.execute(
+            "SELECT COUNT(*) FROM activity_records WHERE employee_id=? AND assigned_by='career_quest' AND status='completed'", (employee_id,)).fetchone()[0]},
     }
 
 
-def hr_summary(connection: sqlite3.Connection) -> dict[str, Any]:
+def hr_summary(connection: sqlite3.Connection, department: str) -> dict[str, Any]:
     gaps_counter: Counter[str] = Counter()
     without = []
-    for employee in connection.execute("SELECT * FROM employees ORDER BY full_name"):
+    employees = connection.execute('SELECT * FROM employees WHERE department=? ORDER BY full_name', (department,)).fetchall()
+    for employee in employees:
         target = target_for(connection, employee)
         gaps = build_gaps(connection, employee, target)
         for gap in gaps:
             if gap["expected_gap"] > 0:
                 gaps_counter[gap["name"]] += 1
-        if gaps and not recommend(connection, employee, target, gaps):
-            without.append({"employee_id": employee["employee_id"], "full_name": employee["full_name"], "target_role": target["role"]})
-    statuses = {row["status"]: row["count"] for row in connection.execute("SELECT status, COUNT(*) AS count FROM activity_records GROUP BY status")}
+        exclusions: Counter = Counter()
+        if any(g['expected_gap'] > 0 for g in gaps) and not recommend(connection, employee, target, gaps, exclusions=exclusions):
+            without.append({"employee_id": employee["employee_id"], "full_name": employee["full_name"], "target_role": target["role"], 'reasons': [{'reason': name, 'events': count} for name, count in exclusions.most_common()]})
+    statuses = {row['status']: row['count'] for row in connection.execute('''SELECT a.status, COUNT(*) AS count
+        FROM activity_records a JOIN employees e ON e.employee_id=a.employee_id
+        WHERE e.department=? GROUP BY a.status''', (department,))}
     total = sum(statuses.values())
     completed = statuses.get("completed", 0)
     return {
+        'department': department, 'employee_count': len(employees),
         "top_gaps": [{"name": name, "employees": count} for name, count in gaps_counter.most_common(5)],
         "employees_without_recommendations": without,
         "participation": {"total_records": total, "completed": completed, "completion_rate": round(completed / total * 100, 1) if total else 0, "statuses": statuses},
+        'events': [dict(row) for row in connection.execute('''SELECT ev.event_id, ev.title, COUNT(*) AS participants,
+            SUM(CASE WHEN a.status='completed' THEN 1 ELSE 0 END) AS completed
+            FROM activity_records a JOIN employees e ON e.employee_id=a.employee_id
+            JOIN events ev ON ev.event_id=a.event_id WHERE e.department=?
+            GROUP BY ev.event_id ORDER BY participants DESC''', (department,))],
     }
