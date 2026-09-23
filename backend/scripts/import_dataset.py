@@ -174,6 +174,7 @@ def import_dataset() -> dict[str, int]:
             ],
         )
 
+    connection.close()
     return {
         "skills": len(skills_doc["skills"]),
         "employees": len(employees_doc["employees"]),
