@@ -4,6 +4,8 @@ import sqlite3
 from collections import Counter
 from typing import Any
 
+from .gamification import build_gamification, quest_xp
+
 
 SNAPSHOT_DATE = "2026-10-01"
 RECURRING_EVENT_ID = "EV_036"
@@ -199,6 +201,7 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
             {
                 "event_id": event["event_id"], "title": event["title"], "description": event["description"],
                 "type": event["type"], "format": event["format"], "duration_hours": duration,
+                "reward_xp": quest_xp(duration),
                 "next_session": sessions[0] if sessions else None, "score": score,
                 "participation_id": f"{event['event_id']}:{sessions[0]}" if event['event_id'] == RECURRING_EVENT_ID and sessions else event['event_id'],
                 "score_label": "Recommendation Score", "components": components,
@@ -236,6 +239,7 @@ def career_payload(connection: sqlite3.Connection, employee_id: str) -> dict[str
         "current_skills": current_skills,
         "recommendations": recommendations, "progress": progress,
         "snapshot_date": SNAPSHOT_DATE,
+        "gamification": build_gamification(connection, employee_id, SNAPSHOT_DATE),
         "history": [dict(row) for row in connection.execute(
             '''SELECT a.record_id, a.event_id, e.title, a.date, a.status, a.completion_pct,
                       a.assigned_by FROM activity_records a JOIN events e ON e.event_id=a.event_id

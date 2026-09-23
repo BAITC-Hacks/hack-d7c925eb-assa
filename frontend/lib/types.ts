@@ -31,6 +31,7 @@ export type Recommendation = {
   participation_id: string;
   score: number;
   score_label: string;
+  reward_xp: number;
   components: Record<string, number>;
   covered_skills: { skill_id: string; name: string; gain: number; critical: boolean }[];
   explanation: string;
@@ -46,6 +47,7 @@ export type Career = {
   snapshot_date: string;
   history: { record_id: string; event_id: string; title: string; date: string; status: string; completion_pct: number; assigned_by: string }[];
   achievements: { quests_completed: number };
+  gamification: Gamification;
   progress: {
     total_required: number;
     unknown_required: number;
@@ -54,6 +56,38 @@ export type Career = {
     remaining_gap: number;
     expected_remaining_gap: number;
   };
+};
+
+export type GameBadge = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  progress: number;
+  target: number;
+  unlocked: boolean;
+  reward_xp: number;
+};
+export type GameReward = { xp: number; level_up: boolean; level_title: string; badges: string[] };
+export type Gamification = {
+  total_xp: number;
+  level: number;
+  level_title: string;
+  level_floor_xp: number;
+  next_level_xp: number;
+  level_progress_pct: number;
+  xp_to_next_level: number;
+  completed_quests: number;
+  learning_hours: number;
+  skill_count: number;
+  current_streak: number;
+  best_streak: number;
+  as_of: string;
+  badges: GameBadge[];
+  missions: { id: string; title: string; description: string; progress: number; target: number; completed: boolean; reward_xp: number }[];
+  milestones: { level: number; title: string; xp: number; reached: boolean }[];
+  activity_days: { date: string; count: number; xp: number }[];
+  recent_rewards: { id: string; title: string; date: string; xp: number; source: string }[];
 };
 
 export type HrSummary = {
@@ -67,7 +101,7 @@ export type HrSummary = {
 
 export type CardAction = { kind: "explain" | "compare"; event_ids: string[] };
 export type Ask = (message: string, reset?: boolean, action?: CardAction) => void;
-export type View = "comparison" | "explanation" | "clarification" | "level" | "skill_map" | "route" | "next_step" | "history" | "hr_gaps" | "hr_coverage" | "hr_events" | "skill_guide";
+export type View = "comparison" | "explanation" | "clarification" | "level" | "skill_map" | "route" | "next_step" | "history" | "hr_gaps" | "hr_coverage" | "hr_events" | "skill_guide" | "rewards";
 export type Session = { token: string; employee_id: string; role: "employee" | "hr"; department: string; demo: boolean };
 export type AppConfig = { demo: boolean; ai_enabled: boolean; snapshot_date: string };
 export type Options = { recommendations: Recommendation[]; max_minutes: number | null; event_format: string | null; exclusions: { reason: string; events: number }[] };

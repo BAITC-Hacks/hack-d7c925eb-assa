@@ -139,7 +139,16 @@ def complete_event(employee_id: str, event_id: str, data: Completion = Completio
                 (f"CQ_{uuid.uuid4().hex[:12]}", employee_id, event_id, date),
             )
         payload = career_payload(connection, employee_id)
-    return {"completed": True, "already_completed": bool(existing), "career": payload}
+        game = payload['gamification']
+        previous = career['gamification'] if not existing else game
+        reward = {
+            'xp': max(0, game['total_xp'] - previous['total_xp']),
+            'level_up': game['level'] > previous['level'],
+            'level_title': game['level_title'],
+            'badges': [badge['title'] for badge in game['badges'] if badge['unlocked']
+                       and not any(old['id'] == badge['id'] and old['unlocked'] for old in previous['badges'])],
+        }
+    return {"completed": True, "already_completed": bool(existing), "career": payload, "reward": reward}
 
 
 @router.get("/hr/summary")

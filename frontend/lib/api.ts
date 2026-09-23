@@ -1,4 +1,4 @@
-import { Career, Employee, HrSummary, Session, AppConfig, AgentReply, CardAction } from "./types";
+import { Career, Employee, HrSummary, Session, AppConfig, AgentReply, CardAction, GameReward } from "./types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
@@ -30,7 +30,7 @@ export function scopedApi(token: string) {
     restore: () => request<Omit<Session,"token">>("/session", { headers }),
     goals: () => request<{role:string;grade:string}[]>("/goals", { headers }),
     goal: (id:string, role:string, grade:string) => request<Career>(`/employees/${encodeURIComponent(id)}/goal`, { method:"PUT", headers, body:JSON.stringify({role,grade}) }),
-    complete: (id: string, eventId: string, participationId: string) => request<{ career: Career; already_completed: boolean }>(`/employees/${encodeURIComponent(id)}/events/${encodeURIComponent(eventId)}/complete`, { method: "POST", headers, body: JSON.stringify({participation_id: participationId}) }),
+    complete: (id: string, eventId: string, participationId: string) => request<{ career: Career; already_completed: boolean; reward: GameReward }>(`/employees/${encodeURIComponent(id)}/events/${encodeURIComponent(eventId)}/complete`, { method: "POST", headers, body: JSON.stringify({participation_id: participationId}) }),
     assistant: (message: string, reset = false, signal?: AbortSignal, conversationId?: string, action?: CardAction) => request<AgentReply>("/assistant", { method: "POST", headers, signal, body: JSON.stringify({ message, reset_constraints: reset, conversation_id: conversationId, action }) }),
     logout: () => request<{ logged_out: boolean }>("/session", { method: "DELETE", headers }),
   };

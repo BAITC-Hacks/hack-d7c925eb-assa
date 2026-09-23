@@ -261,6 +261,7 @@ def append_dataset(folder: Path) -> dict[str, int]:
                     require(old == values, 'record_id уже занят другой записью')
                     counts['duplicates'] += 1
                 else:
+                    require(r['assigned_by'] != 'career_quest', 'assigned_by=career_quest зарезервирован для завершений в приложении')
                     db.execute('INSERT INTO activity_records VALUES (?,?,?,?,?,?,?,?,?,?)', values)
                     counts['history_added'] += 1
             except (AssertionError, KeyError, ValueError, TypeError, sqlite3.IntegrityError) as exc:

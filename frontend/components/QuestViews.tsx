@@ -4,6 +4,7 @@ import { Ask } from "../lib/types";
 import { useState } from "react";
 import { Artifact, Career, HrSummary, Options, Recommendation, View } from "../lib/types";
 import { QuestIcon as Icon } from "./QuestIcon";
+import { GameDashboard } from "./Gamification";
 
 const fmt: Record<string, string> = { self_paced: "В своём темпе", online: "Онлайн", offline: "Очно", hybrid: "Гибрид", workshop: "Практикум", webinar: "Вебинар" };
 export const duration = (hours: number) => hours < 1 ? `${Math.round(hours * 60)} мин` : `${hours} ч`;
@@ -27,6 +28,7 @@ export function QuestCard({ item, career, complete, busy, ask, primary = true }:
   return <article className={`quest-card ${primary ? "featured" : ""}`}>
     <div className="quest-top"><span className="eyebrow">{primary ? "ТВОЙ СЛЕДУЮЩИЙ КВЕСТ" : "АЛЬТЕРНАТИВНЫЙ ПУТЬ"}</span><span className="quest-score" title="Оценка соответствия, не вероятность повышения">{item.score}<small>/100</small></span></div>
     <h3>{item.title}</h3><p className="muted quest-description">{item.description}</p>
+    {item.reward_xp > 0 && <div className="quest-reward"><Icon name="gem" size={16}/><strong>+{item.reward_xp} XP</strong><span>за завершение квеста · бонусы достижений отдельно</span></div>}
     <div className="quest-meta"><span><Icon name="clock" size={14}/>{duration(item.duration_hours)}</span><span>{fmt[item.format] || item.format}</span>{item.next_session && <span>{item.next_session}</span>}</div>
     <div className="gains">{item.covered_skills.map(s => { const gap = career.gaps.find(g => g.skill_id === s.skill_id); return <div key={s.skill_id}><span>{s.name}</span><b>{gap?.expected_level} <span className="muted">→</span> {Math.round(((gap?.expected_level || 0) + s.gain) * 10) / 10}<small> / {gap?.required_level}</small></b></div>; })}<small>Ожидаемое сокращение разрыва по требованиям</small></div>
     <details className="why"><summary>Почему этот шаг подходит мне <Icon name="spark" size={14}/></summary><ul>{item.factors.map((f,i) => <li key={i}>{f}</li>)}</ul><div className="score-detail">{Object.entries(item.components).map(([key,value]) => <div key={key}><span>{scoreNames[key]}</span><b>{value}/{scoreMax[key]}</b></div>)}</div></details>
@@ -46,6 +48,7 @@ export function EmployeeView({ career, view, artifact, busy, ask, complete }: { 
   const gaps = career.gaps.map(g=>{const expected=predicted.get(g.skill_id)??g.expected_level;return {...g,expected_level:expected,expected_gap:expected===null?null:Math.max(0,g.required_level-expected)};}).filter(g => g.expected_gap === null || g.expected_gap > 0);
   const completed = career.achievements.quests_completed;
   if (view === "clarification") return null;
+  if (view === "rewards") return career.gamification ? <GameDashboard game={career.gamification} onFindQuest={()=>ask("Что делать дальше?")} busy={busy}/> : <div className="empty-panel">Награды пока недоступны. Обновите страницу после перезапуска сервера.</div>;
   if ((view === "explanation" || view === "comparison") && artifact?.comparison) return <div className="comparison-grid">{artifact.comparison.map(item => item.eligible ? <QuestCard key={item.event_id} item={item as Recommendation} career={career} complete={complete} ask={ask} busy={busy}/> : <article className="empty-panel" key={item.event_id}><h3>{item.title}</h3><p>{item.explanation}</p><span>Сейчас недоступно</span></article>)}</div>;
   if (view === "history") return <section className="history-list"><div className="section-heading"><h2>Твои пройденные этапы</h2><span className="badge">Последние 30</span></div>{career.history.length ? career.history.map(h => <article key={h.record_id}><span className={`history-icon ${h.status === "completed" ? "done" : ""}`}><Icon name={h.status === "completed" ? "check" : "clock"}/></span><div><h3>{h.title}</h3><p className="muted">{h.date} · {({ completed: "Выполнено", in_progress: "В процессе", skipped: "Пропущено", declined: "Отклонено", registered: "Запланировано", no_show: "Не посещено" } as Record<string,string>)[h.status] || h.status}</p></div><b>{h.completion_pct}%</b></article>) : <div className="empty-panel">Истории участия пока нет.</div>}</section>;
   if (view === "skill_guide" && artifact?.guide) return <><LevelCard career={career}/><article className="guide-panel"><span className="eyebrow">ИЗ СПРАВОЧНИКА НАВЫКОВ</span><h2>{artifact.guide.skill.name}</h2><p>{artifact.guide.skill.description}</p><div className="exercise"><span className="badge"><Icon name="leaf" size={14}/> Учебный пример</span><h3>Попробуй на практике</h3><p>{artifact.guide.example}</p><small>{artifact.guide.label}</small></div></article></>;

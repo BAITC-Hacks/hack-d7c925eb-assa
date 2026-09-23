@@ -25,7 +25,7 @@ class Simulate(Empty):
 
 
 class Present(Empty):
-    kind: Literal['level', 'skill_map', 'route', 'next_step', 'hr_gaps', 'hr_coverage', 'hr_events', 'skill_guide', 'comparison', 'explanation', 'clarification']
+    kind: Literal['level', 'skill_map', 'route', 'next_step', 'rewards', 'hr_gaps', 'hr_coverage', 'hr_events', 'skill_guide', 'comparison', 'explanation', 'clarification']
 
 
 class Events(Empty):
@@ -45,7 +45,7 @@ SCHEMAS = {
     'find_development_options': (Find, 'Rank eligible activities. Pass null to clear a time/format constraint. Never invent events.'),
     'simulate_route': (Simulate, 'Preview up to three recommended activities without writing progress. Requires find_development_options first.'),
     'get_skill_guide': (Guide, 'Read a skill definition and a clearly labelled educational exercise. Requires get_my_context first.'),
-    'present_artifact': (Present, 'Finish by publishing a validated visual result and its grounded explanation. Requires the relevant preceding tools.'),
+    'present_artifact': (Present, 'Finish by publishing a validated visual result and its grounded explanation. Requires the relevant preceding tools. For own XP, game level, badges, achievements or a completed quest summary, use kind rewards after get_my_context; no activity ranking is needed. Choosing, explaining, comparing or planning quests follows the usual activity workflow.'),
     'get_team_gaps': (Empty, 'HR only: deficits of the authorized department.'),
     'get_coverage_gaps': (Empty, 'HR only: why development recommendations are unavailable in the authorized department.'),
     'get_team_participation': (Empty, 'HR only: participation counts by activity in the authorized department.'),
@@ -241,6 +241,22 @@ class AgentTools:
                 raise ValueError('Сначала получите определение навыка')
             c = self.career
             self.artifact = {'kind': kind, 'career': c, 'options': self.options, 'simulation': self.simulation, 'guide': self.guide}
+            if kind == 'rewards':
+                game = c['gamification']
+                unlocked = sum(badge['unlocked'] for badge in game['badges'])
+                completed_missions = sum(mission['completed'] for mission in game['missions'])
+                self.artifact = {'kind': 'rewards', 'career': c}
+                self.answer = (
+                    f"Игровой уровень {game['level']} — {game['level_title']}. "
+                    f"Накоплено {game['total_xp']} XP, завершено квестов: {game['completed_quests']}. "
+                    f"Открыто значков: {unlocked} из {len(game['badges'])}; "
+                    f"выполнено миссий: {completed_missions} из {len(game['missions'])}. "
+                    f"Текущая серия обучения: {game['current_streak']} нед. "
+                    "XP и игровой уровень отражают участие в обучении; это не подтверждённая оценка навыков и не грейд."
+                )
+                self.sources = [{'id': 'rewards', 'label': 'Награды и квесты', 'view': 'rewards'},
+                                {'id': 'history', 'label': 'История участия', 'view': 'history'}]
+                return {'published': kind, 'source_ids': [s['id'] for s in self.sources]}
             if kind in {'explanation', 'comparison'}:
                 if not self.comparison:
                     raise ValueError('Сначала выберите активности для объяснения')
