@@ -1,4 +1,4 @@
-param([switch]$PrepareOnly, [switch]$SmokeTest)
+﻿param([switch]$PrepareOnly, [switch]$SmokeTest, [int]$ApiPort=8000, [int]$WebPort=3000)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $frontendDir = Join-Path $projectRoot 'frontend'
@@ -24,6 +24,12 @@ function Stop-OwnedProcess($Process) {
         Stop-Process -Id $Process.Id -ErrorAction SilentlyContinue
     }
 }
+$priorApiUrl=$env:NEXT_PUBLIC_API_URL
+$priorOrigins=$env:CQ_CORS_ORIGINS
+if ($ApiPort -ne 8000 -or $WebPort -ne 3000) {
+    $env:NEXT_PUBLIC_API_URL="http://localhost:$ApiPort/api/v1"
+    $env:CQ_CORS_ORIGINS="http://localhost:$WebPort,http://127.0.0.1:$WebPort"
+}
 Push-Location $projectRoot
 try {
     if (-not (Get-Command python -ErrorAction SilentlyContinue)) { throw 'Python 3.11+ is required. Install Python and add it to PATH.' }
@@ -31,7 +37,12 @@ try {
     Invoke-Checked 'python' @('-c', 'import sys; assert sys.version_info >= (3,11), "Python 3.11+ required"')
     Invoke-Checked 'node' @('-e', 'const [a,b]=process.versions.node.split(".").map(Number);if(a<20||(a===20&&b<9))process.exit(1)')
     if (-not (Test-Path -LiteralPath $pythonExe)) { Invoke-Checked 'python' @('-m','venv','.venv') }
-    $requirements = Join-Path $projectRoot 'backend\requirements.txt'
+    if (-not $PrepareOnly -and (Test-Endpoint "http://127.0.0.1:$ApiPort/api/v1/health" 'connected') -and (Test-Endpoint "http://127.0.0.1:$WebPort" 'Career Quest')) {
+        Write-Host "Career Quest is already running: http://localhost:$WebPort"; return
+    }
+    Assert-PortFree $WebPort
+    if (-not $PrepareOnly) { Assert-PortFree $ApiPort }
+    $requirements = Join-Path $projectRoot 'backend\requirements-lock.txt'
     $stamp = Join-Path $projectRoot '.venv\requirements.sha256'
     $hash = (Get-FileHash -LiteralPath $requirements).Hash
     if (-not (Test-Path -LiteralPath $stamp) -or (Get-Content -LiteralPath $stamp -Raw).Trim() -ne $hash) {
@@ -51,26 +62,39 @@ try {
     }
     Invoke-Checked $pythonExe @('-c','from backend.app.database import database_ready; assert database_ready(), "Database invalid: restore a backup. Automatic reset is disabled."')
     if ($PrepareOnly) { Write-Host 'Dependencies and database are ready.'; return }
-    if ((Test-Endpoint 'http://127.0.0.1:8000/api/v1/health' 'connected') -and (Test-Endpoint 'http://127.0.0.1:3000' 'Career Quest')) {
-        Write-Host 'Career Quest is already running: http://localhost:3000'; return
+    if ((Test-Endpoint "http://127.0.0.1:$ApiPort/api/v1/health" 'connected') -and (Test-Endpoint "http://127.0.0.1:$WebPort" 'Career Quest')) {
+        Write-Host "Career Quest is already running: http://localhost:$WebPort"; return
     }
-    Assert-PortFree 8000
-    Assert-PortFree 3000
-    $apiProcess = Start-Process -FilePath $pythonExe -ArgumentList '-m','uvicorn','backend.app.main:app','--host','127.0.0.1','--port','8000' -WorkingDirectory $projectRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $projectRoot 'backend\server.log') -RedirectStandardError (Join-Path $projectRoot 'backend\server-error.log')
-    $webProcess = Start-Process -FilePath 'node' -ArgumentList 'node_modules/next/dist/bin/next','dev','--hostname','127.0.0.1','--port','3000' -WorkingDirectory $frontendDir -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $frontendDir 'server.log') -RedirectStandardError (Join-Path $frontendDir 'server-error.log')
+    Assert-PortFree $ApiPort
+    Assert-PortFree $WebPort
+    $apiProcess = Start-Process -FilePath $pythonExe -ArgumentList '-m','uvicorn','backend.app.main:app','--host','127.0.0.1','--port',$ApiPort -WorkingDirectory $projectRoot -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $projectRoot 'backend\server.log') -RedirectStandardError (Join-Path $projectRoot 'backend\server-error.log')
+    $webProcess = Start-Process -FilePath 'node' -ArgumentList 'node_modules/next/dist/bin/next','dev','--hostname','127.0.0.1','--port',$WebPort -WorkingDirectory $frontendDir -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $frontendDir 'server.log') -RedirectStandardError (Join-Path $frontendDir 'server-error.log')
     $ready = $false
     for ($attempt=0; $attempt -lt 60; $attempt++) {
         if ($apiProcess.HasExited -or $webProcess.HasExited) { throw 'A server exited. See backend/server-error.log and frontend/server-error.log.' }
-        if ((Test-Endpoint 'http://127.0.0.1:8000/api/v1/health' 'connected') -and (Test-Endpoint 'http://127.0.0.1:3000' 'Career Quest')) { $ready=$true; break }
+        if ((Test-Endpoint "http://127.0.0.1:$ApiPort/api/v1/health" 'connected') -and (Test-Endpoint "http://127.0.0.1:$WebPort" 'Career Quest')) { $ready=$true; break }
         Start-Sleep -Seconds 1
     }
     if (-not $ready) { throw 'Startup timed out. See backend/server-error.log and frontend/server-error.log.' }
-    Write-Host 'Career Quest ready: http://localhost:3000 | Ctrl+C stops this launch.'
-    if ($SmokeTest) { return }
+    Write-Host "Career Quest ready: http://localhost:$WebPort | Ctrl+C stops this launch."
+    if ($SmokeTest) {
+        $config=Invoke-RestMethod "http://127.0.0.1:$ApiPort/api/v1/config"
+        if ($config.demo) {
+            $login=Invoke-RestMethod "http://127.0.0.1:$ApiPort/api/v1/session" -Method Post -ContentType 'application/json' -Body '{}'
+            $headers=@{Authorization="Bearer $($login.token)"}
+            $reply=Invoke-RestMethod "http://127.0.0.1:$ApiPort/api/v1/assistant" -Method Post -ContentType 'application/json; charset=utf-8' -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes('{"message":"Покажи карту навыков"}'))
+            if (-not $reply.answer -or $reply.artifact.kind -ne 'skill_map') { throw 'Assistant smoke test returned no answer.' }
+            Invoke-RestMethod "http://127.0.0.1:$ApiPort/api/v1/session" -Method Delete -Headers $headers | Out-Null
+            Write-Host "Assistant smoke test passed ($($reply.mode))."
+        }
+        return
+    }
     while (-not $apiProcess.HasExited -and -not $webProcess.HasExited) { Start-Sleep -Seconds 1 }
     throw 'A server stopped unexpectedly. See the server-error.log files.'
 } finally {
     Stop-OwnedProcess $webProcess
     Stop-OwnedProcess $apiProcess
+    $env:NEXT_PUBLIC_API_URL=$priorApiUrl
+    $env:CQ_CORS_ORIGINS=$priorOrigins
     Pop-Location
 }

@@ -196,6 +196,10 @@ def append_dataset(folder: Path) -> dict[str, int]:
         history = list(csv.DictReader(f))
     if not employees_path.exists() and not history_path.exists():
         raise ValueError('Нужен employees.json или activity_history.csv')
+    def require(condition, message):
+        if not condition:
+            raise ValueError(message)
+
     errors = []
     counts = {'employees_added': 0, 'history_added': 0, 'duplicates': 0}
     with closing(sqlite3.connect(DB_PATH)) as db, db:
@@ -207,21 +211,21 @@ def append_dataset(folder: Path) -> dict[str, int]:
         for index, e in enumerate(employees):
             try:
                 import re
-                assert re.fullmatch(r'E\d{4,8}', e['employee_id']), 'неверный employee_id'
-                assert all(isinstance(e[k], str) and e[k].strip() for k in ('full_name', 'department', 'role', 'grade', 'work_format', 'preferred_language')), 'пустое поле профиля'
+                require(re.fullmatch(r'E\d{4,8}', e['employee_id']), 'неверный employee_id')
+                require(all(isinstance(e[k], str) and e[k].strip() for k in ('full_name', 'department', 'role', 'grade', 'work_format', 'preferred_language')), 'пустое поле профиля')
                 date.fromisoformat(e['last_review_date'])
-                assert (e['role'], e['grade']) in profiles, 'неизвестная роль/грейд'
-                assert type(e['tenure_months']) is int and e['tenure_months'] >= 0, 'неверный стаж'
+                require((e['role'], e['grade']) in profiles, 'неизвестная роль/грейд')
+                require(type(e['tenure_months']) is int and e['tenure_months'] >= 0, 'неверный стаж')
                 for skill, level in e.get('skills', {}).items():
-                    assert skill in skills and type(level) is int and 0 <= level <= 5, 'неверный навык/уровень'
+                    require(skill in skills and type(level) is int and 0 <= level <= 5, 'неверный навык/уровень')
                 goal = e.get('career_goal')
                 if goal:
-                    assert (goal['target_role'], goal['target_grade']) in profiles, 'неизвестная цель'
+                    require((goal['target_role'], goal['target_grade']) in profiles, 'неизвестная цель')
                 values = (e['employee_id'], e['full_name'], e['department'], e['role'], e['grade'], e.get('manager_id'), e['tenure_months'], e['work_format'], e['preferred_language'], e['last_review_date'])
                 old = db.execute('SELECT * FROM employees WHERE employee_id=?', (e['employee_id'],)).fetchone()
                 if old:
                     # A repeated import must not reset a goal selected in the application.
-                    assert old == values and dict(db.execute('SELECT skill_id, level FROM employee_skills WHERE employee_id=?', (e['employee_id'],))) == e.get('skills', {}), 'профиль с таким ID уже существует с другими данными'
+                    require(old == values and dict(db.execute('SELECT skill_id, level FROM employee_skills WHERE employee_id=?', (e['employee_id'],))) == e.get('skills', {}), 'профиль с таким ID уже существует с другими данными')
                     counts['duplicates'] += 1
                     continue
                 db.execute('INSERT INTO employees VALUES (?,?,?,?,?,?,?,?,?,?)', values)
@@ -234,19 +238,19 @@ def append_dataset(folder: Path) -> dict[str, int]:
                 errors.append(f'employees[{index}]: {exc}')
         for index, r in enumerate(history):
             try:
-                assert r['record_id'] and len(r['record_id']) <= 100, 'неверный record_id'
-                assert r['employee_id'] in ids and r['event_id'] in events, 'неизвестный профиль или событие'
+                require(r['record_id'] and len(r['record_id']) <= 100, 'неверный record_id')
+                require(r['employee_id'] in ids and r['event_id'] in events, 'неизвестный профиль или событие')
                 date.fromisoformat(r['date'])
                 if r['due_date']:
                     date.fromisoformat(r['due_date'])
-                assert r['status'] in {'completed', 'in_progress', 'skipped', 'declined', 'registered', 'no_show', 'assigned', 'not_started', 'overdue', 'dropped'}, 'неверный статус'
+                require(r['status'] in {'completed', 'in_progress', 'skipped', 'declined', 'registered', 'no_show', 'assigned', 'not_started', 'overdue', 'dropped'}, 'неверный статус')
                 pct, score, rating = int(r['completion_pct']), optional_int(r['score']), optional_int(r['feedback_rating'])
-                assert 0 <= pct <= 100 and (score is None or 0 <= score <= 100) and (rating is None or 1 <= rating <= 5), 'неверный диапазон'
-                assert r['status'] != 'completed' or pct == 100, 'завершение должно быть 100%'
+                require(0 <= pct <= 100 and (score is None or 0 <= score <= 100) and (rating is None or 1 <= rating <= 5), 'неверный диапазон')
+                require(r['status'] != 'completed' or pct == 100, 'завершение должно быть 100%')
                 values = (r['record_id'], r['employee_id'], r['event_id'], r['date'], r['due_date'] or None, r['status'], pct, score, rating, r['assigned_by'])
                 old = db.execute('SELECT * FROM activity_records WHERE record_id=?', (r['record_id'],)).fetchone()
                 if old:
-                    assert old == values, 'record_id уже занят другой записью'
+                    require(old == values, 'record_id уже занят другой записью')
                     counts['duplicates'] += 1
                 else:
                     db.execute('INSERT INTO activity_records VALUES (?,?,?,?,?,?,?,?,?,?)', values)

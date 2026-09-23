@@ -1,5 +1,5 @@
-import { Ask } from "../lib/types";
 "use client";
+import { Ask } from "../lib/types";
 
 import { useState } from "react";
 import { Artifact, Career, HrSummary, Options, Recommendation, View } from "../lib/types";
