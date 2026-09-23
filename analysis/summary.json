@@ -1,0 +1,282 @@
+{
+  "snapshot_date": "2026-10-01",
+  "history_window": {
+    "start": "2024-10-01",
+    "end": "2026-09-30"
+  },
+  "validation": {
+    "passed": true,
+    "issue_count": 0,
+    "issues": [],
+    "unique_ids": {
+      "skills": true,
+      "employees": true,
+      "events": true,
+      "activity_records": true,
+      "role_profiles": true
+    }
+  },
+  "dataset": {
+    "skills": 60,
+    "role_profiles": 32,
+    "employees": 200,
+    "events": 40,
+    "activity_records": 2743
+  },
+  "workforce": {
+    "roles": {
+      "Backend Engineer": 40,
+      "Customer Support Specialist": 26,
+      "Data Analyst": 24,
+      "Frontend Engineer": 28,
+      "HR Business Partner": 14,
+      "Product Manager": 18,
+      "QA Engineer": 20,
+      "Sales Manager": 30
+    },
+    "grades": {
+      "Junior": 59,
+      "Middle": 78,
+      "Senior": 47,
+      "Lead": 16
+    },
+    "work_formats": {
+      "hybrid": 75,
+      "office": 90,
+      "remote": 35
+    },
+    "preferred_languages": {
+      "en": 11,
+      "kk": 89,
+      "ru": 100
+    },
+    "career_goals_set": 134,
+    "career_goals_set_pct": 67.0,
+    "median_tenure_months": 29.0
+  },
+  "activity": {
+    "statuses": {
+      "completed": 2178,
+      "declined": 104,
+      "dropped": 160,
+      "in_progress": 16,
+      "no_show": 195,
+      "overdue": 90
+    },
+    "completion_rate_pct": 79.4,
+    "assigned_by": {
+      "hr": 1381,
+      "manager": 497,
+      "self": 865
+    },
+    "completion_by_assigned_by": {
+      "hr": {
+        "participations": 1381,
+        "completion_rate_pct": 88.4
+      },
+      "manager": {
+        "participations": 497,
+        "completion_rate_pct": 54.1
+      },
+      "self": {
+        "participations": 865,
+        "completion_rate_pct": 79.5
+      }
+    },
+    "avg_score": 84.07,
+    "score_coverage_pct": 48.2,
+    "avg_feedback": 3.88,
+    "feedback_coverage_pct": 32.7
+  },
+  "catalog": {
+    "event_types": {
+      "certification": 1,
+      "compliance": 3,
+      "course": 15,
+      "meetup": 1,
+      "mentoring": 2,
+      "onboarding": 1,
+      "workshop": 17
+    },
+    "event_formats": {
+      "offline": 10,
+      "online": 21,
+      "self_paced": 9
+    },
+    "mandatory_events": 4,
+    "voluntary_events": 36
+  },
+  "skill_gaps": {
+    "total_gap_rows": 1650,
+    "employees_with_gaps": 200,
+    "employees_with_gaps_pct": 100.0,
+    "employees_with_critical_gaps": 165,
+    "employees_with_critical_gaps_pct": 82.5,
+    "top_skills": [
+      [
+        "Communication",
+        108
+      ],
+      [
+        "Mentoring",
+        100
+      ],
+      [
+        "Leadership",
+        80
+      ],
+      [
+        "Stakeholder Management",
+        79
+      ],
+      [
+        "Public Speaking",
+        78
+      ],
+      [
+        "SQL",
+        66
+      ],
+      [
+        "Critical Thinking",
+        52
+      ],
+      [
+        "Problem Solving",
+        49
+      ],
+      [
+        "CI/CD",
+        45
+      ],
+      [
+        "Teamwork",
+        45
+      ]
+    ],
+    "top_critical_skills": [
+      [
+        "Leadership",
+        30
+      ],
+      [
+        "Mentoring",
+        22
+      ],
+      [
+        "API Design",
+        16
+      ],
+      [
+        "Statistics",
+        14
+      ],
+      [
+        "Negotiation",
+        13
+      ],
+      [
+        "TypeScript",
+        13
+      ],
+      [
+        "System Design",
+        12
+      ],
+      [
+        "Technical Troubleshooting",
+        12
+      ],
+      [
+        "Product Discovery",
+        10
+      ],
+      [
+        "A/B Testing",
+        10
+      ]
+    ],
+    "by_category": {
+      "engineering": 294,
+      "communication": 290,
+      "leadership": 217,
+      "product": 158,
+      "data": 131,
+      "sales": 111,
+      "thinking": 101,
+      "frontend": 91,
+      "collaboration": 81,
+      "quality": 65,
+      "personal_effectiveness": 49,
+      "hr": 33,
+      "support": 29
+    }
+  },
+  "recommendations": {
+    "rows": 466,
+    "employees_with_recommendations": 171,
+    "coverage_of_employees_with_gaps_pct": 85.5
+  },
+  "top_events_by_completion_rate": [
+    {
+      "event_id": "EV_004",
+      "title": "New Employee Onboarding",
+      "participants": 80,
+      "completion_rate_pct": 100.0
+    },
+    {
+      "event_id": "EV_003",
+      "title": "Code of Conduct & Workplace Safety",
+      "participants": 404,
+      "completion_rate_pct": 94.8
+    },
+    {
+      "event_id": "EV_002",
+      "title": "Personal Data Protection",
+      "participants": 377,
+      "completion_rate_pct": 90.7
+    },
+    {
+      "event_id": "EV_001",
+      "title": "Information Security Awareness",
+      "participants": 363,
+      "completion_rate_pct": 90.6
+    },
+    {
+      "event_id": "EV_026",
+      "title": "Product Discovery Lab",
+      "participants": 17,
+      "completion_rate_pct": 88.2
+    },
+    {
+      "event_id": "EV_015",
+      "title": "Web Performance Fundamentals",
+      "participants": 13,
+      "completion_rate_pct": 84.6
+    },
+    {
+      "event_id": "EV_014",
+      "title": "Web Performance Deep Dive",
+      "participants": 12,
+      "completion_rate_pct": 83.3
+    },
+    {
+      "event_id": "EV_030",
+      "title": "Structured Interviewing",
+      "participants": 11,
+      "completion_rate_pct": 81.8
+    },
+    {
+      "event_id": "EV_039",
+      "title": "Time & Priority Management",
+      "participants": 98,
+      "completion_rate_pct": 80.6
+    },
+    {
+      "event_id": "EV_032",
+      "title": "Negotiation Masterclass",
+      "participants": 27,
+      "completion_rate_pct": 77.8
+    }
+  ]
+}
