@@ -1,4 +1,4 @@
-import { Career, Employee, HrSummary, Session, AppConfig, AgentReply } from "./types";
+import { Career, Employee, HrSummary, Session, AppConfig, AgentReply, CardAction } from "./types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
@@ -27,8 +27,11 @@ export function scopedApi(token: string) {
   return {
     career: (id: string, signal?: AbortSignal) => request<Career>(`/employees/${encodeURIComponent(id)}/career`, { headers, signal }),
     hr: (signal?: AbortSignal) => request<HrSummary>("/hr/summary", { headers, signal }),
-    complete: (id: string, eventId: string) => request<{ career: Career; already_completed: boolean }>(`/employees/${encodeURIComponent(id)}/events/${encodeURIComponent(eventId)}/complete`, { method: "POST", headers }),
-    assistant: (message: string, reset = false, signal?: AbortSignal) => request<AgentReply>("/assistant", { method: "POST", headers, signal, body: JSON.stringify({ message, reset_constraints: reset }) }),
+    restore: () => request<Omit<Session,"token">>("/session", { headers }),
+    goals: () => request<{role:string;grade:string}[]>("/goals", { headers }),
+    goal: (id:string, role:string, grade:string) => request<Career>(`/employees/${encodeURIComponent(id)}/goal`, { method:"PUT", headers, body:JSON.stringify({role,grade}) }),
+    complete: (id: string, eventId: string, participationId: string) => request<{ career: Career; already_completed: boolean }>(`/employees/${encodeURIComponent(id)}/events/${encodeURIComponent(eventId)}/complete`, { method: "POST", headers, body: JSON.stringify({participation_id: participationId}) }),
+    assistant: (message: string, reset = false, signal?: AbortSignal, conversationId?: string, action?: CardAction) => request<AgentReply>("/assistant", { method: "POST", headers, signal, body: JSON.stringify({ message, reset_constraints: reset, conversation_id: conversationId, action }) }),
     logout: () => request<{ logged_out: boolean }>("/session", { method: "DELETE", headers }),
   };
 }

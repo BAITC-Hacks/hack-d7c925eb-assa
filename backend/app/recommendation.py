@@ -28,7 +28,8 @@ def projected_gains(connection: sqlite3.Connection, employee_id: str) -> dict[st
         SELECT g.skill_id, g.gain, g.max_level
         FROM activity_records a
         JOIN event_skill_gains g ON g.event_id = a.event_id
-        WHERE a.employee_id = ? AND a.status = 'completed' AND a.assigned_by = 'career_quest'
+        JOIN employees e ON e.employee_id = a.employee_id
+        WHERE a.employee_id = ? AND a.status = 'completed' AND a.date > e.last_review_date
         ORDER BY a.date, a.rowid, g.skill_id
         """,
         (employee_id,),
@@ -113,7 +114,7 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
         JOIN event_targets t ON t.event_id = e.event_id
         WHERE e.mandatory = 0 AND t.role = ? AND t.grade = ?
         """,
-        (target["role"], target["grade"]),
+        (employee["role"], employee["grade"]),
     ).fetchall()
     result = []
     total_gap = sum(gap["expected_gap"] for gap in actionable.values()) or 1
@@ -121,7 +122,7 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
         if max_minutes is not None and event['duration_hours'] * 60 > max_minutes:
             reject('Не укладывается в доступное время')
             continue
-        if event_format and event['format'] != event_format:
+        if event_format and event['format'] not in ({'online', 'self_paced'} if event_format == 'online' else {event_format}):
             reject('Не подходит выбранный формат')
             continue
         if event["event_id"] in completed and event["event_id"] != RECURRING_EVENT_ID:
@@ -139,6 +140,11 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
                 (event["event_id"], SNAPSHOT_DATE),
             )
         ]
+        if event['event_id'] == RECURRING_EVENT_ID:
+            used = {r[0] for r in connection.execute(
+                "SELECT date FROM activity_records WHERE employee_id=? AND event_id=? AND status='completed'",
+                (employee['employee_id'], event['event_id']))}
+            sessions = [date for date in sessions if date not in used]
         if event["format"] != "self_paced" and not sessions:
             reject('Нет доступной сессии')
             continue
@@ -173,10 +179,15 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
         }
         score = sum(components.values())
         names = ", ".join(item["name"] for item in covered)
+        history_counts = dict(connection.execute(
+            'SELECT status, COUNT(*) FROM activity_records WHERE employee_id=? GROUP BY status',
+            (employee['employee_id'],)))
+        history_evidence = ('Истории участия нет; используется нейтральная оценка.' if not history_counts else
+            f"История: завершено {history_counts.get('completed', 0)}, пропущено {history_counts.get('no_show', 0) + history_counts.get('skipped', 0)}, отклонено {history_counts.get('declined', 0)}. Соответствие типа и формата: {history}/20.")
         evidence = [
             f"Цель: {target['role']} · {target['grade']}.",
             'Навыки: ' + '; '.join(f"{c['name']} {actionable[c['skill_id']]['expected_level']:g}/{actionable[c['skill_id']]['required_level']}" + (' — критический' if c['critical'] else '') for c in covered) + '.',
-            f"Соответствие истории: {history}/20; учитываются завершения и пропуски этого типа и формата, а также отзывы.",
+            history_evidence,
             f"Ожидаемое сокращение дефицита: {useful_gain:g}. Длительность: {duration:g} ч.",
         ]
         explanation = ' '.join(evidence)
@@ -185,6 +196,7 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
                 "event_id": event["event_id"], "title": event["title"], "description": event["description"],
                 "type": event["type"], "format": event["format"], "duration_hours": duration,
                 "next_session": sessions[0] if sessions else None, "score": score,
+                "participation_id": f"{event['event_id']}:{sessions[0]}" if event['event_id'] == RECURRING_EVENT_ID and sessions else event['event_id'],
                 "score_label": "Recommendation Score", "components": components,
                 "covered_skills": covered, "explanation": explanation, "factors": evidence,
             }
@@ -202,6 +214,11 @@ def career_payload(connection: sqlite3.Connection, employee_id: str) -> dict[str
     target = target_for(connection, employee)
     gaps = build_gaps(connection, employee, target)
     recommendations = recommend(connection, employee, target, gaps)
+    gains = projected_gains(connection, employee_id)
+    current_skills = [dict(r) for r in connection.execute('''SELECT s.*, es.level AS current_level
+        FROM employee_skills es JOIN skills s ON s.skill_id=es.skill_id WHERE es.employee_id=? ORDER BY s.name''', (employee_id,))]
+    for skill in current_skills:
+        skill['expected_level'] = round(skill['current_level'] + gains.get(skill['skill_id'], 0), 1)
     progress = {
         "total_required": len(gaps),
         "confirmed_ready": sum(gap["gap"] == 0 for gap in gaps),
@@ -211,6 +228,7 @@ def career_payload(connection: sqlite3.Connection, employee_id: str) -> dict[str
     }
     return {
         "employee": dict(employee), "target": target, "gaps": gaps,
+        "current_skills": current_skills,
         "recommendations": recommendations, "progress": progress,
         "snapshot_date": SNAPSHOT_DATE,
         "history": [dict(row) for row in connection.execute(
