@@ -164,7 +164,7 @@ class AgentTools:
         allowed = {e['event_id']: e for e in self.options['recommendations']}
         if len(event_ids) != len(set(event_ids)) or any(e not in allowed for e in event_ids):
             raise ValueError('Можно моделировать только уникальные допустимые активности')
-        levels = {s['skill_id']: s['expected_level'] for s in self.career['gaps']}
+        levels = {s['skill_id']: s['expected_level'] for s in self.career['gaps'] if s['expected_level'] is not None}
         steps = []
         with connect() as db:
             for event_id in event_ids:
@@ -180,8 +180,8 @@ class AgentTools:
                 steps.append({'event_id': event_id, 'title': allowed[event_id]['title'], 'changes': changes})
         self.simulation = steps
         return {'steps': steps, 'remaining': [{'skill_id': g['skill_id'], 'name': g['name'],
-                'expected': levels[g['skill_id']], 'required': g['required_level']}
-                for g in self.career['gaps'] if levels[g['skill_id']] < g['required_level']],
+                'expected': levels.get(g['skill_id']), 'required': g['required_level']}
+                for g in self.career['gaps'] if g['skill_id'] not in levels or levels[g['skill_id']] < g['required_level']],
                 'note': 'Прогноз, не подтверждённая оценка. Грейд не меняется.'}
 
     def get_skill_guide(self, skill_id: str) -> dict:
@@ -251,6 +251,8 @@ class AgentTools:
             self.answer += f"Цель: {c['target']['role']} · {c['target']['grade']}. " if c['target']['source'] == 'career_goal' else 'Цель пока не задана: показываю требования текущей роли. '
             p = c['progress']
             self.answer += f"Подтверждено {p['confirmed_ready']} из {p['total_required']} требований. "
+            if p['unknown_required']:
+                self.answer += f"Нет оценки для {p['unknown_required']} требований; сначала нужна оценка этих навыков. "
             if kind in {'route', 'next_step'}:
                 recs = self.options['recommendations']
                 if recs:

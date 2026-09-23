@@ -35,7 +35,9 @@ def projected_gains(connection: sqlite3.Connection, employee_id: str) -> dict[st
         (employee_id,),
     ).fetchall()
     for row in rows:
-        current = levels.get(row['skill_id'], 0)
+        if row['skill_id'] not in levels:
+            continue  # Without a baseline, training is not a confirmed zero-level assessment.
+        current = levels[row['skill_id']]
         levels[row['skill_id']] = max(current, min(5, row['max_level'], current + row['gain']))
     return {key: value - initial.get(key, 0) for key, value in levels.items()}
 
@@ -45,7 +47,7 @@ def build_gaps(connection: sqlite3.Connection, employee: sqlite3.Row, target: di
     rows = connection.execute(
         """
         SELECT r.skill_id, s.name, s.type, s.category, s.description, r.required_level, r.is_critical,
-               COALESCE(es.level, 0) AS current_level
+               es.level AS current_level
         FROM role_skill_requirements r
         JOIN skills s ON s.skill_id = r.skill_id
         LEFT JOIN employee_skills es ON es.skill_id = r.skill_id AND es.employee_id = ?
@@ -56,17 +58,17 @@ def build_gaps(connection: sqlite3.Connection, employee: sqlite3.Row, target: di
     ).fetchall()
     gaps = []
     for row in rows:
-        confirmed = int(row["current_level"])
-        expected = min(5.0, confirmed + gains.get(row["skill_id"], 0))
+        confirmed = int(row["current_level"]) if row["current_level"] is not None else None
+        expected = min(5.0, confirmed + gains.get(row["skill_id"], 0)) if confirmed is not None else None
         required = int(row["required_level"])
         gaps.append(
             {
                 "skill_id": row["skill_id"], "name": row["name"], "type": row["type"],
                 "category": row["category"], "current_level": confirmed,
                 "description": row["description"],
-                "expected_level": round(expected, 1), "required_level": required,
-                "gap": max(0, required - confirmed),
-                "expected_gap": round(max(0, required - expected), 1),
+                "expected_level": round(expected, 1) if expected is not None else None, "required_level": required,
+                "gap": max(0, required - confirmed) if confirmed is not None else None,
+                "expected_gap": round(max(0, required - expected), 1) if expected is not None else None,
                 "critical": bool(row["is_critical"]),
             }
         )
@@ -96,7 +98,9 @@ def recommend(connection: sqlite3.Connection, employee: sqlite3.Row, target: dic
     def reject(reason: str) -> None:
         if exclusions is not None:
             exclusions[reason] += 1
-    actionable = {gap["skill_id"]: gap for gap in gaps if gap["expected_gap"] > 0}
+    actionable = {gap["skill_id"]: gap for gap in gaps if gap["expected_gap"] is not None and gap["expected_gap"] > 0}
+    if any(g['current_level'] is None for g in gaps):
+        reject('Для части навыков нет оценки: сначала требуется оценка, затем подбор')
     completed = {
         row[0] for row in connection.execute(
             "SELECT event_id FROM activity_records WHERE employee_id = ? AND status = 'completed'",
@@ -221,10 +225,11 @@ def career_payload(connection: sqlite3.Connection, employee_id: str) -> dict[str
         skill['expected_level'] = round(skill['current_level'] + gains.get(skill['skill_id'], 0), 1)
     progress = {
         "total_required": len(gaps),
+        "unknown_required": sum(g["current_level"] is None for g in gaps),
         "confirmed_ready": sum(gap["gap"] == 0 for gap in gaps),
         "expected_ready": sum(gap["expected_gap"] == 0 for gap in gaps),
-        "remaining_gap": round(sum(gap["gap"] for gap in gaps), 1),
-        "expected_remaining_gap": round(sum(gap["expected_gap"] for gap in gaps), 1),
+        "remaining_gap": round(sum(gap["gap"] or 0 for gap in gaps), 1),
+        "expected_remaining_gap": round(sum(gap["expected_gap"] or 0 for gap in gaps), 1),
     }
     return {
         "employee": dict(employee), "target": target, "gaps": gaps,
@@ -248,10 +253,10 @@ def hr_summary(connection: sqlite3.Connection, department: str) -> dict[str, Any
         target = target_for(connection, employee)
         gaps = build_gaps(connection, employee, target)
         for gap in gaps:
-            if gap["expected_gap"] > 0:
+            if gap["expected_gap"] is not None and gap["expected_gap"] > 0:
                 gaps_counter[gap["name"]] += 1
         exclusions: Counter = Counter()
-        if any(g['expected_gap'] > 0 for g in gaps) and not recommend(connection, employee, target, gaps, exclusions=exclusions):
+        if any(g['expected_gap'] is None or g['expected_gap'] > 0 for g in gaps) and not recommend(connection, employee, target, gaps, exclusions=exclusions):
             without.append({"employee_id": employee["employee_id"], "full_name": employee["full_name"], "target_role": target["role"], 'reasons': [{'reason': name, 'events': count} for name, count in exclusions.most_common()]})
     statuses = {row['status']: row['count'] for row in connection.execute('''SELECT a.status, COUNT(*) AS count
         FROM activity_records a JOIN employees e ON e.employee_id=a.employee_id

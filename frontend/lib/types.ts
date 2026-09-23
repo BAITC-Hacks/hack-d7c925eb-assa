@@ -11,11 +11,11 @@ export type SkillGap = {
   name: string;
   type: string;
   category: string;
-  current_level: number;
-  expected_level: number;
+  current_level: number | null;
+  expected_level: number | null;
   required_level: number;
-  gap: number;
-  expected_gap: number;
+  gap: number | null;
+  expected_gap: number | null;
   critical: boolean;
   description: string;
 };
@@ -48,6 +48,7 @@ export type Career = {
   achievements: { quests_completed: number };
   progress: {
     total_required: number;
+    unknown_required: number;
     confirmed_ready: number;
     expected_ready: number;
     remaining_gap: number;

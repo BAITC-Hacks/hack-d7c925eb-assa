@@ -189,6 +189,8 @@ def append_dataset(folder: Path) -> dict[str, int]:
     """Add profiles and history atomically. Existing profiles and progress are immutable here."""
     from datetime import date
     from contextlib import closing
+    if not DB_PATH.is_file():
+        raise ValueError('Сначала создайте базовый каталог обычным импортом')
     employees_path = folder / 'employees.json'
     history_path = folder / 'activity_history.csv'
     employees = json.loads(employees_path.read_text(encoding='utf-8-sig'))['employees'] if employees_path.exists() else []
@@ -200,6 +202,7 @@ def append_dataset(folder: Path) -> dict[str, int]:
         if not condition:
             raise ValueError(message)
 
+    require(isinstance(employees, list) and all(isinstance(e, dict) for e in employees), 'employees должен быть массивом объектов')
     errors = []
     counts = {'employees_added': 0, 'history_added': 0, 'duplicates': 0}
     with closing(sqlite3.connect(DB_PATH)) as db, db:
@@ -216,6 +219,8 @@ def append_dataset(folder: Path) -> dict[str, int]:
                 date.fromisoformat(e['last_review_date'])
                 require((e['role'], e['grade']) in profiles, 'неизвестная роль/грейд')
                 require(type(e['tenure_months']) is int and e['tenure_months'] >= 0, 'неверный стаж')
+                require(isinstance(e.get('skills', {}), dict), 'skills должен быть объектом')
+                require(e.get('manager_id') is None or isinstance(e['manager_id'], str), 'неверный manager_id')
                 for skill, level in e.get('skills', {}).items():
                     require(skill in skills and type(level) is int and 0 <= level <= 5, 'неверный навык/уровень')
                 goal = e.get('career_goal')
@@ -236,6 +241,9 @@ def append_dataset(folder: Path) -> dict[str, int]:
                 counts['employees_added'] += 1
             except (AssertionError, KeyError, ValueError, TypeError, sqlite3.IntegrityError) as exc:
                 errors.append(f'employees[{index}]: {exc}')
+        for index, e in enumerate(employees):
+            if isinstance(e.get('manager_id'), str) and e['manager_id'] and e['manager_id'] not in ids:
+                errors.append(f'employees[{index}]: неизвестный manager_id')
         for index, r in enumerate(history):
             try:
                 require(r['record_id'] and len(r['record_id']) <= 100, 'неверный record_id')

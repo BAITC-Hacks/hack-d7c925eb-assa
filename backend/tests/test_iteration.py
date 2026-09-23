@@ -2,6 +2,8 @@ import csv
 import json
 import os
 import time
+import unittest
+import asyncio
 from pathlib import Path
 from unittest.mock import patch, AsyncMock
 import test_recommendation
@@ -12,7 +14,11 @@ from backend.scripts import import_dataset as importer
 
 ROOT = Path(__file__).resolve().parents[2]
 
-class IterationTests(test_recommendation.ApiTest):
+class IterationTests(unittest.TestCase):
+    setUp = test_recommendation.ApiTest.setUp
+    tearDown = test_recommendation.ApiTest.tearDown
+    ask = test_recommendation.ApiTest.ask
+
     def test_independent_all_200_profiles(self):
         employees = json.loads((ROOT/'career_quest_dataset/employees.json').read_text(encoding='utf-8'))['employees']
         events = {e['event_id']: e for e in json.loads((ROOT/'career_quest_dataset/events.json').read_text(encoding='utf-8'))['events']}
@@ -26,7 +32,9 @@ class IterationTests(test_recommendation.ApiTest):
                     if record['employee_id'] != employee['employee_id'] or record['status'] != 'completed' or record['date'] <= employee['last_review_date']:
                         continue
                     for gain in events[record['event_id']]['develops_skills']:
-                        skill = gain['skill_id']; old = levels.get(skill, 0)
+                        skill = gain['skill_id']
+                        if skill not in levels: continue  # Training cannot invent an unassessed baseline.
+                        old = levels[skill]
                         room = max(0, min(5, gain['max_level']) - old)
                         levels[skill] = old + min(room, gain['gain'])
                 actual = projected_gains(db, employee['employee_id'])
@@ -34,6 +42,19 @@ class IterationTests(test_recommendation.ApiTest):
                     self.assertAlmostEqual(level, employee['skills'].get(skill, 0) + actual.get(skill, 0), msg=employee['employee_id']+skill)
             c = career_payload(db, 'E0001')
             self.assertEqual(next(g for g in c['gaps'] if g['skill_id']=='SK_APP_SECURITY')['expected_level'], 1)
+
+    def test_missing_assessment_and_requirements(self):
+        with database.connect() as db:
+            db.execute("DELETE FROM employee_skills WHERE employee_id='E0001' AND skill_id='SK_APP_SECURITY'")
+            career=career_payload(db,'E0001')
+            skill=next(g for g in career['gaps'] if g['skill_id']=='SK_APP_SECURITY')
+            self.assertIsNone(skill['current_level'])
+            self.assertIsNone(skill['expected_level'])
+            self.assertEqual(career['progress']['unknown_required'],1)
+        self.assertEqual(self.ask('Что дальше?').status_code,200)
+        with database.connect() as db:
+            db.execute("DELETE FROM role_skill_requirements WHERE role='Backend Engineer' AND grade='Middle'")
+            self.assertEqual(career_payload(db,'E0001')['progress']['total_required'],0)
 
     def test_context_and_25_paraphrases(self):
         cases = [
@@ -161,3 +182,12 @@ class IterationTests(test_recommendation.ApiTest):
         self.assertEqual(self.ask('x'*2001).status_code,422)
         for session in SESSIONS.values():session.requests=[time.monotonic()]*20
         self.assertEqual(self.ask('Карта навыков').status_code,429)
+
+    def test_actual_total_model_deadline(self):
+        async def slow(_):
+            await asyncio.sleep(30)
+        begin=time.monotonic()
+        with patch('backend.app.assistant.external_enabled',return_value=True),patch('backend.app.assistant.model_step',side_effect=slow):
+            result=self.ask('Карта навыков').json()
+        self.assertEqual(result['mode'],'fallback')
+        self.assertLess(time.monotonic()-begin,10)

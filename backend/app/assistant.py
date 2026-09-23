@@ -163,7 +163,7 @@ async def run_assistant(data: AssistantRequest, session: Session) -> dict:
     trace: list[dict] = []
     started = time.monotonic()
     try:
-        if any(e != session.employee_id for e in re.findall(r'\bE\d{4,8}\b', data.message, flags=re.I)):
+        if any(e.upper() != session.employee_id for e in re.findall(r'\bE\d{4,8}\b', data.message, flags=re.I)):
             raise HTTPException(403, 'В чате доступны только собственный профиль и разрешённые HR-агрегаты')
         tools = AgentTools(session)
 

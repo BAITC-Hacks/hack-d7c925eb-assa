@@ -1,0 +1,169 @@
+/* Halyk-inspired presentation. Colors and layout only; no product logic. */
+:root {
+  --ink: #172a25;
+  --muted: #65756f;
+  --faint: #84928c;
+  --line: #e0e8e3;
+  --paper: #fff;
+  --canvas: #f4f6f5;
+  --accent: #00866b;
+  --accent-dark: #006650;
+  --mint-soft: #e7f5ed;
+  --green: #00765c;
+  --mint: #e7f5ed;
+  --amber: #855b09;
+  --gold: #fff5cf;
+  --shadow: 0 8px 30px rgb(24 66 48 / 4%);
+}
+body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; }
+:focus-visible { outline-color: #d8a518; }
+h1 { font-weight: 700; font-size: clamp(30px, 3vw, 44px); letter-spacing: -1.2px; }
+h2 { font-size: 25px; font-weight: 650; }
+.quest-app { grid-template-columns: 242px minmax(0, 1fr); }
+.sidebar { padding: 30px 20px 22px; }
+.brand { color: var(--accent); font-size: 23px; font-weight: 750; }
+.brand-mark { color: var(--accent-dark); background: #ffc936; box-shadow: none; border-radius: 13px; }
+.avatar { border-radius: 50%; background: var(--mint); color: var(--accent); }
+.profile-block > .muted { font-size: 12px; }
+.grade-badge { font-size: 11px; }
+.demo-controls label { font-size: 11px; }
+.side-navigation > button { font-size: 13px; }
+.side-navigation > button.selected { background: var(--mint); color: var(--accent-dark); }
+.side-navigation > button:hover { background: #f0f6f2; }
+.button { padding: 11px 18px; border-radius: 11px; font-size: 13px; font-weight: 600; box-shadow: none; }
+.button.primary { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: none; }
+.button.primary:hover:not(:disabled) { background: var(--accent-dark); border-color: var(--accent-dark); }
+.button.quiet { color: var(--accent); background: var(--mint); border-color: transparent; }
+.text-button { font-size: 13px; }
+select { font-size: 13px; border-radius: 10px; }
+.workspace { max-width: 1260px; margin: 0 auto; padding: 30px clamp(22px, 3vw, 48px); }
+.workspace-heading { isolation: isolate; overflow: hidden; position: relative; min-height: 224px; padding: 30px 34px; margin-bottom: 26px; border-radius: 28px; background: var(--accent); color: white; }
+.workspace-heading::after { content: ''; position: absolute; z-index: -1; right: -105px; bottom: -160px; width: 260px; height: 260px; border: 44px solid rgb(255 255 255 / 8%); border-radius: 50%; }
+.workspace-heading .eyebrow { color: #c3e8d8; }
+.workspace-heading h1 { margin: 8px 0 12px; max-width: 650px; }
+.workspace-heading p { color: #e2f1e9; font-size: 14px; max-width: 570px; }
+.breadcrumbs { color: #d6eee4; margin-bottom: 24px; }
+.breadcrumbs > span { color: #b6dbcb; }
+.workspace-heading > .mobile-agent { position: static; flex-shrink: 0; color: var(--accent-dark); background: white; border: 0; }
+.level-card { padding: 26px 28px 22px; border-radius: 24px; }
+.level-points strong { font-size: 32px; }
+.level-points .muted:not(.tiny) { font-size: 12px; }
+.goal-medal { background: var(--gold); color: #947000; transform: none; }
+.progress-label { font-size: 13px; }
+.progress-track { height: 7px; background: #eaf0ec; }
+.progress-track > span { background: var(--accent); }
+.level-foot { font-size: 11px; color: var(--muted); }
+.goal-picker { font-size: 13px; margin: 22px 0; }
+.journey { max-width: 920px; }
+.journey-node.active { color: var(--accent-dark); background: #ffc936; box-shadow: none; }
+.quest-card { padding: 25px; border-radius: 24px; background: white; }
+.quest-card.featured { background: white; border-color: #a9d3be; box-shadow: var(--shadow); }
+.quest-card h3 { font-size: 23px; letter-spacing: -.5px; }
+.quest-description { font-size: 13px; line-height: 1.75; }
+.quest-score { padding: 6px 12px; background: var(--gold); color: #775807; border-radius: 11px; font-size: 21px; }
+.quest-top .eyebrow { font-size: 10px; }
+.quest-meta > span { background: #f2f6f3; color: var(--muted); font-size: 11px; }
+.gains { background: #f0f8f3; padding: 13px 15px; border-radius: 13px; }
+.gains > div, .why { font-size: 13px; }
+.gains > small { display: block; font-size: 10px; color: var(--muted); margin-top: 7px; }
+.why ul { font-size: 12px; line-height: 1.8; }
+.score-detail { background: var(--canvas); border-radius: 10px; }
+.score-detail > div { font-size: 11px; }
+.stop-copy h3 { font-size: 18px; }
+.stop-copy p { font-size: 12px; }
+.skill-grid { gap: 16px; }
+.skill-card { padding: 22px; border-radius: 21px; }
+.skill-section > .skill-card { margin-top: 14px; }
+.skill-card h3 { font-size: 18px; }
+.skill-card p, .skill-card .text-button { font-size: 12px; }
+.skill-status, .skill-legend { font-size: 11px; }
+.skill-values { font-size: 13px; }
+.skill-symbol { width: 37px; height: 37px; border-radius: 12px; }
+.filter-buttons { background: #e7eeea; }
+.achievement { border-radius: 18px; }
+.achievement-medal { background: var(--gold); color: #92700a; }
+.guide-panel, .team-panel { padding: 27px; border-radius: 24px; }
+.team-metrics > div { padding: 23px; border-radius: 22px; }
+.team-metrics > div > span { font-size: 12px; }
+.team-metrics strong { font-size: 39px; color: var(--accent); }
+.team-metrics small { font-size: 11px; }
+.team-bars > div > div:first-child { font-size: 14px; }
+.team-callout { border-radius: 23px; padding: 26px; }
+.team-callout h3 { font-size: 19px; }
+.team-callout p, .coverage-list ul { font-size: 13px; }
+.coverage-list > article { padding: 23px; border-radius: 21px; }
+.person-row h3 { font-size: 17px; }
+.person-row .muted { font-size: 12px; }
+.mini-avatar { border-radius: 50%; }
+.event-table > div { font-size: 13px; padding: 16px 0; }
+.event-table-head { font-size: 11px !important; }
+.agent-heading { padding: 21px 30px; }
+.agent-heading strong { font-size: 17px; }
+.agent-symbol { width: 43px; height: 43px; border-radius: 14px; }
+.close-chat { border: 1px solid var(--line); border-radius: 50%; background: white; }
+.agent-intro { max-width: 600px; padding: 24px; }
+.intro-symbol { width: 72px; height: 72px; margin: 0 auto 22px; border-radius: 24px; color: var(--accent-dark); background: #ffc936; }
+.agent-intro h2 { max-width: none; font-size: 32px; margin-bottom: 15px; }
+.agent-intro > p { font-size: 15px; }
+.agent-capabilities { justify-content: center; font-size: 13px; color: var(--green); text-align: left; }
+.mode-note { background: #f2f6f3; font-size: 12px; border-radius: 13px; }
+.quick-commands > button { font-size: 12px; padding: 8px 12px; border-radius: 10px; }
+.chat-composer { border-color: #c5d9cd; border-radius: 18px; background: #f7faf8; box-shadow: none; }
+.chat-message.user .message-text { background: var(--mint); font-size: 15px; padding: 14px 18px; border-radius: 18px 18px 3px 18px; }
+.message-author, .response-mode, .message-sources button { font-size: 11px; }
+.empty-panel { padding: 30px; border-radius: 24px; }
+.empty-panel h3 { font-size: 21px; }
+.empty-panel p, .error-box, .success-note { font-size: 13px; }
+.welcome-shell { background: var(--mint); }
+.welcome-card { border-radius: 30px; box-shadow: var(--shadow); }
+.welcome-card h1 { font-size: 36px; }
+.confirm-dialog { border-radius: 27px; }
+.confirm-dialog h2 { font-size: 25px; }
+.confirm-dialog > p { font-size: 13px; }
+.modal-backdrop, .menu-backdrop { background: #112d225e; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .quest-app { grid-template-columns: 216px minmax(0, 1fr); }
+  .sidebar { padding: 26px 15px 20px; }
+  .brand { font-size: 21px; }
+  .workspace { padding: 24px; }
+  .workspace-heading { padding: 26px; }
+  .workspace-heading h1 { font-size: 33px; }
+  .team-metrics > div { padding: 16px; }
+  .team-metrics strong { font-size: 33px; }
+}
+@media (max-width: 760px) {
+  .workspace { padding: 16px 14px 24px; }
+  .workspace-heading { display: block; min-height: 245px; padding: 23px 22px; border-radius: 23px; }
+  .workspace-heading > .mobile-agent { position: absolute; top: 14px; right: 14px; font-size: 11px; padding: 8px 10px; min-height: 38px; }
+  .breadcrumbs { font-size: 10px; padding-right: 76px; margin-bottom: 25px; }
+  .workspace-heading h1 { font-size: 32px; margin-top: 9px; }
+  .workspace-heading p { font-size: 12px; }
+  .workspace-heading .eyebrow { font-size: 9px; }
+  .goal-picker { margin: 18px 0; gap: 9px; }
+  .goal-picker select { min-width: 155px; }
+  .goal-picker .button { padding: 10px 12px; }
+  .level-card { padding: 20px; border-radius: 21px; }
+  .level-points strong { font-size: 25px; }
+  .level-points .muted:not(.tiny), .level-foot { font-size: 10px; }
+  .progress-label { font-size: 12px; }
+  .section-heading h2 { font-size: 23px; }
+  .quest-card { padding: 18px; border-radius: 20px; }
+  .quest-card h3 { font-size: 22px; }
+  .quest-score { font-size: 19px; padding: 5px 9px; }
+  .quest-top .eyebrow { font-size: 9px; }
+  .gains { padding: 10px 12px; }
+  .gains > div { font-size: 12px; }
+  .stop-copy h3 { font-size: 16px; }
+  .skill-card { padding: 21px; }
+  .skill-card h3 { font-size: 19px; }
+  .team-metrics > div { padding: 18px 20px; }
+  .team-metrics strong { font-size: 33px; }
+  .team-panel, .guide-panel { padding: 20px; }
+  .team-callout { padding: 21px; gap: 12px; }
+  .team-callout h3 { font-size: 18px; }
+  .agent-heading { padding: 10px 14px; }
+  .agent-intro { padding: 20px 12px; }
+  .agent-intro h2 { font-size: 28px; }
+  .agent-intro > p { font-size: 14px; }
+  .welcome-card h1 { font-size: 31px; }
+}

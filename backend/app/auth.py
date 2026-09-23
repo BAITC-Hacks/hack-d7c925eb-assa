@@ -59,14 +59,14 @@ def create_session(data: Login, request: Request) -> dict:
         employee_id = data.employee_id
     else:
         expected = os.getenv('CQ_HR_ACCESS_CODE' if data.role == 'hr' else 'CQ_EMPLOYEE_ACCESS_CODE', '')
-        if len(expected) < 16 or not hmac.compare_digest(data.access_code, expected):
+        if len(expected) < 16 or not hmac.compare_digest(data.access_code.encode(), expected.encode()):
             raise HTTPException(401, 'Неверный код доступа')
         employee_id = os.getenv('CQ_EMPLOYEE_ID', 'E0001')
     with connect() as db:
         employee = db.execute('SELECT * FROM employees WHERE employee_id=?', (employee_id,)).fetchone()
     if not employee:
         raise HTTPException(404, 'Профиль не найден')
-    department = employee['department'] if demo_mode() else os.getenv('CQ_HR_DEPARTMENT', employee['department'])
+    department = employee['department'] if demo_mode() else (os.getenv('CQ_HR_DEPARTMENT') or employee['department'])
     now = time.time()
     for token, session in list(SESSIONS.items()):
         if session.expires < now:
