@@ -1,5 +1,8 @@
 # Архитектура приложения Career Quest
 
+Продуктовые решения, Career GPS, Recommendation Score и правила геймификации
+зафиксированы в [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md).
+
 ## Общая схема
 
 ```mermaid
