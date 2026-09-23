@@ -1,7 +1,30 @@
-# Career Quest — разбор датасета
+# Career Quest — MVP карьерного навигатора
 
-Репозиторий содержит исходный синтетический датасет Career Quest и
-воспроизводимый аналитический пайплайн без внешних зависимостей.
+Репозиторий содержит работающий MVP Career Quest: экран сотрудника, прозрачные
+рекомендации, пересчёт ожидаемого прогресса и HR-сводку. Данные импортируются в
+SQLite из исходного синтетического датасета.
+
+## Быстрый запуск
+
+Нужны Python 3.10+ и Node.js 18+.
+
+```powershell
+.\run.ps1
+```
+
+Приложение откроется на `http://localhost:3000`, документация API — на
+`http://localhost:8000/docs`. При первом запуске скрипт создаст SQLite и
+установит frontend-зависимости.
+
+Ручной запуск:
+
+```powershell
+python backend/scripts/import_dataset.py
+python -m uvicorn backend.app.main:app --reload
+cd frontend
+npm install
+npm run dev
+```
 
 Архитектура будущего приложения описана в [`ARCHITECTURE.md`](ARCHITECTURE.md),
 а целевой пользовательский опыт и правила продукта — в
@@ -9,6 +32,9 @@
 
 ## Состав
 
+- `backend/` — FastAPI, SQLite-импортёр и recommendation engine;
+- `frontend/` — Next.js интерфейсы сотрудника и HR;
+- `run.ps1` — запуск обоих сервисов одной командой;
 - `career_quest_dataset/` — исходные JSON/CSV-файлы и описание схемы;
 - `scripts/analyze_dataset.py` — проверка связей, расчёт метрик, дефицитов
   навыков и рекомендаций;
@@ -18,7 +44,7 @@
 - `analysis/employee_skill_gaps.csv` — дефициты навыков сотрудников;
 - `analysis/recommendations.csv` — до пяти рекомендаций на сотрудника.
 
-## Запуск
+## Аналитический пайплайн
 
 ```bash
 python scripts/analyze_dataset.py

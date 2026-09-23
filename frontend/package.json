@@ -1,0 +1,22 @@
+{
+  "name": "career-quest-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.12",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "5.5.4"
+  }
+}
