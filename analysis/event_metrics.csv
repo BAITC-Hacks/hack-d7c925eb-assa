@@ -1,0 +1,41 @@
+﻿event_id,title,type,format,mandatory,duration_hours,participants,completed,completion_rate_pct,in_progress,dropped,no_show,declined,overdue,avg_score,avg_feedback,feedback_count
+EV_003,Code of Conduct & Workplace Safety,compliance,self_paced,true,2,404,383,94.8,0,0,0,0,21,85.42,,0
+EV_002,Personal Data Protection,compliance,self_paced,true,2,377,342,90.7,0,0,0,0,35,85.08,,0
+EV_001,Information Security Awareness,compliance,self_paced,true,2,363,329,90.6,0,0,0,0,34,84.64,,0
+EV_036,Public Speaking Club,meetup,offline,false,2,261,181,69.3,0,0,51,29,0,,4.21,133
+EV_040,Structured Problem Solving,workshop,offline,false,4,140,93,66.4,0,7,27,13,0,,4.03,72
+EV_008,Business Writing & Documentation,workshop,online,false,4,116,90,77.6,0,13,9,4,0,,3.9,70
+EV_037,Mentor Track,mentoring,online,false,12,114,82,71.9,0,11,16,5,0,,3.8,70
+EV_039,Time & Priority Management,workshop,online,false,3,98,79,80.6,0,0,10,9,0,,3.85,53
+EV_004,New Employee Onboarding,onboarding,offline,true,8,80,80,100.0,0,0,0,0,0,,4.22,50
+EV_038,Leadership Foundations,course,online,false,16,66,46,69.7,1,6,11,2,0,77.65,3.79,33
+EV_034,Handling Difficult Conversations,workshop,online,false,4,59,42,71.2,0,5,6,6,0,,4,36
+EV_009,Cloud Certification Prep,certification,self_paced,false,40,55,35,63.6,2,14,0,4,0,78.94,3.46,37
+EV_005,System Design Fundamentals,course,online,false,16,47,28,59.6,3,10,5,1,0,81.39,3.68,25
+EV_011,Secure Coding Workshop,workshop,offline,false,6,36,22,61.1,0,5,8,1,0,,3.9,20
+EV_012,Advanced Python,course,self_paced,false,24,36,20,55.6,0,12,0,4,0,86.45,3.35,17
+EV_019,API & Performance Testing Workshop,workshop,offline,false,8,35,20,57.1,0,8,6,1,0,,3.56,18
+EV_016,Accessible Interfaces,workshop,online,false,4,31,23,74.2,0,3,3,2,0,,4.25,16
+EV_035,Technical Troubleshooting Academy,course,online,false,16,31,20,64.5,4,5,1,1,0,79.35,3.93,15
+EV_023,Data Storytelling & Visualization,workshop,offline,false,6,29,21,72.4,0,4,3,1,0,,3.95,21
+EV_032,Negotiation Masterclass,workshop,offline,false,8,27,21,77.8,0,2,4,0,0,,3.95,19
+EV_020,Applied Statistics for Analysts,course,self_paced,false,40,24,14,58.3,0,7,0,3,0,81.64,3.09,11
+EV_006,Designing High-Load Systems,workshop,offline,false,12,23,16,69.6,0,4,1,2,0,,4.15,13
+EV_022,SQL & BI for Analytics,course,online,false,12,23,14,60.9,2,1,4,2,0,78.57,3.62,13
+EV_027,Roadmapping & Agile Planning,workshop,online,false,6,22,14,63.6,0,4,2,2,0,,3.22,9
+EV_025,Dimensional Data Modeling,course,online,false,10,20,11,55.0,2,1,5,1,0,78.36,4,9
+EV_007,Architecture Review Circle,mentoring,online,false,8,19,11,57.9,0,3,3,2,0,,3.58,12
+EV_010,Kubernetes in Practice,course,online,false,20,19,14,73.7,0,4,0,1,0,76.93,3.38,13
+EV_013,TypeScript in Depth,course,online,false,12,19,10,52.6,0,3,5,1,0,83.4,3.38,8
+EV_018,Test Automation Bootcamp,course,online,false,24,18,11,61.1,0,6,1,0,0,80.55,3.17,12
+EV_033,Consultative Selling & Prospecting,course,online,false,10,18,14,77.8,0,0,2,2,0,78.57,4.2,10
+EV_017,React Patterns & State Management,course,online,false,16,17,8,47.1,0,5,4,0,0,81.5,3.5,10
+EV_021,A/B Testing Workshop,workshop,online,false,6,17,11,64.7,0,2,2,2,0,,3.56,9
+EV_026,Product Discovery Lab,workshop,offline,false,8,17,15,88.2,0,2,0,0,0,,4,12
+EV_015,Web Performance Fundamentals,course,self_paced,false,6,13,11,84.6,2,0,0,0,0,80.18,4.62,8
+EV_028,Labor Law & Employee Relations,workshop,online,false,4,13,9,69.2,0,3,1,0,0,,3.22,9
+EV_014,Web Performance Deep Dive,workshop,offline,false,8,12,10,83.3,0,0,1,1,0,,4.5,6
+EV_031,Designing Learning Programs,workshop,online,false,6,12,6,50.0,0,0,4,2,0,,3.4,5
+EV_024,Machine Learning for Analysts,course,self_paced,false,30,11,6,54.5,0,5,0,0,0,82.17,3.14,7
+EV_030,Structured Interviewing,workshop,online,false,4,11,9,81.8,0,2,0,0,0,,3.86,7
+EV_029,People Analytics & Total Rewards,course,self_paced,false,12,10,7,70.0,0,3,0,0,0,86.29,4.12,8

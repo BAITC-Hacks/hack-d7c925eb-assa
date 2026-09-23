@@ -1,0 +1,467 @@
+﻿employee_id,full_name,target_role,target_grade,rank,event_id,event_title,event_type,format,duration_hours,next_session,skills_covered,critical_skills_covered,useful_gain,ranking_score
+E0001,Marat Yessenov,Backend Engineer,Middle,1,EV_005,System Design Fundamentals,course,online,16,2026-11-23,System Design; API Design,1,2.0,120.125
+E0001,Marat Yessenov,Backend Engineer,Middle,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms; CI/CD,0,2.0,20.05
+E0001,Marat Yessenov,Backend Engineer,Middle,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0001,Marat Yessenov,Backend Engineer,Middle,4,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0002,Arman Zhaksylykov,Backend Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0002,Arman Zhaksylykov,Backend Engineer,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0002,Arman Zhaksylykov,Backend Engineer,Senior,3,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0003,Symbat Omarova,Customer Support Specialist,Senior,1,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution,0,1.0,10.25
+E0003,Symbat Omarova,Customer Support Specialist,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Conflict Resolution,0,1.0,10.0625
+E0004,Nikita Smirnov,Product Manager,Middle,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0004,Nikita Smirnov,Product Manager,Middle,2,EV_021,A/B Testing Workshop,workshop,online,6,2026-11-19,Product Analytics,1,1.0,110.1667
+E0004,Nikita Smirnov,Product Manager,Middle,3,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,0,4.0,40.6667
+E0004,Nikita Smirnov,Product Manager,Middle,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0005,Togzhan Yessenova,Backend Engineer,Senior,1,EV_007,Architecture Review Circle,mentoring,online,8,2026-10-23,System Design,1,1.0,110.125
+E0005,Togzhan Yessenova,Backend Engineer,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0005,Togzhan Yessenova,Backend Engineer,Senior,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0005,Togzhan Yessenova,Backend Engineer,Senior,4,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0006,Arman Sadykov,Frontend Engineer,Lead,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0006,Arman Sadykov,Frontend Engineer,Lead,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0007,Kanat Tulegenov,Backend Engineer,Lead,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,System Design; API Design; Observability,1,3.0,130.25
+E0007,Kanat Tulegenov,Backend Engineer,Lead,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0008,Botagoz Sadykova,Frontend Engineer,Senior,1,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0009,Anna Novikova,QA Engineer,Junior,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0009,Anna Novikova,QA Engineer,Junior,2,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing,0,1.0,10.125
+E0010,Aruzhan Seitkali,QA Engineer,Middle,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing; Load Testing,1,2.0,120.25
+E0010,Aruzhan Seitkali,QA Engineer,Middle,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0012,Yerzhan Tulegenov,Sales Manager,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0012,Yerzhan Tulegenov,Sales Manager,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0013,Rustem Ismailov,Data Analyst,Senior,1,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization; Public Speaking,0,2.0,20.3333
+E0013,Rustem Ismailov,Data Analyst,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0013,Rustem Ismailov,Data Analyst,Senior,3,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0014,Yulia Kuznetsova,Product Manager,Lead,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0014,Yulia Kuznetsova,Product Manager,Lead,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0014,Yulia Kuznetsova,Product Manager,Lead,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0015,Zhanna Akhmetova,Frontend Engineer,Senior,1,EV_015,Web Performance Fundamentals,course,self_paced,6,self_paced,Web Performance,1,1.0,110.1667
+E0015,Zhanna Akhmetova,Frontend Engineer,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0015,Zhanna Akhmetova,Frontend Engineer,Senior,3,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0016,Assel Omarova,Backend Engineer,Middle,1,EV_005,System Design Fundamentals,course,online,16,2026-11-23,System Design; API Design,1,2.0,120.125
+E0016,Assel Omarova,Backend Engineer,Middle,2,EV_012,Advanced Python,course,self_paced,24,self_paced,Python,1,1.0,110.0417
+E0016,Assel Omarova,Backend Engineer,Middle,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving; Teamwork,0,2.0,20.5
+E0016,Assel Omarova,Backend Engineer,Middle,4,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms; CI/CD,0,2.0,20.05
+E0016,Assel Omarova,Backend Engineer,Middle,5,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0017,Kamila Bekova,Product Manager,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0018,Yerzhan Seitkali,Customer Support Specialist,Middle,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0019,Anna Pavlova,Frontend Engineer,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0019,Anna Pavlova,Frontend Engineer,Middle,2,EV_016,Accessible Interfaces,workshop,online,4,2026-10-06,HTML & CSS,0,1.0,10.25
+E0019,Anna Pavlova,Frontend Engineer,Middle,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0020,Rustem Mukanov,Data Analyst,Junior,1,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,SQL; BI Tools,1,2.0,120.1667
+E0020,Rustem Mukanov,Data Analyst,Junior,2,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0020,Rustem Mukanov,Data Analyst,Junior,3,EV_020,Applied Statistics for Analysts,course,self_paced,40,self_paced,Statistics,0,1.0,10.025
+E0022,Ksenia Morozova,Data Analyst,Middle,1,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0022,Ksenia Morozova,Data Analyst,Middle,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0023,Zhanna Baimukhanova,Backend Engineer,Middle,1,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms; CI/CD,0,2.0,20.05
+E0023,Zhanna Baimukhanova,Backend Engineer,Middle,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0023,Zhanna Baimukhanova,Backend Engineer,Middle,3,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,CI/CD,0,1.0,10.05
+E0024,Pavel Kuznetsov,Customer Support Specialist,Middle,1,EV_035,Technical Troubleshooting Academy,course,online,16,2026-10-09,Technical Troubleshooting; Product Knowledge,1,2.0,120.125
+E0024,Pavel Kuznetsov,Customer Support Specialist,Middle,2,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management; Adaptability,0,2.0,20.6667
+E0024,Pavel Kuznetsov,Customer Support Specialist,Middle,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication; Communication,0,2.0,20.5
+E0024,Pavel Kuznetsov,Customer Support Specialist,Middle,4,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring; Feedback,0,2.0,20.1667
+E0024,Pavel Kuznetsov,Customer Support Specialist,Middle,5,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0025,Maxim Ivanov,Data Analyst,Junior,1,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,SQL,1,1.0,110.0833
+E0027,Timur Tulegenov,HR Business Partner,Middle,1,EV_028,Labor Law & Employee Relations,workshop,online,4,2026-10-12,Labor Law,1,1.0,110.25
+E0027,Timur Tulegenov,HR Business Partner,Middle,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0028,Akmaral Ismailova,Backend Engineer,Middle,1,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration,0,1.0,10.05
+E0028,Akmaral Ismailova,Backend Engineer,Middle,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms,0,1.0,10.025
+E0030,Nurlan Utepov,Customer Support Specialist,Senior,1,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution; Customer Service,0,2.0,20.5
+E0030,Nurlan Utepov,Customer Support Specialist,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Conflict Resolution,0,2.0,20.125
+E0030,Nurlan Utepov,Customer Support Specialist,Senior,3,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management,0,1.0,10.3333
+E0031,Zhanna Mukanova,QA Engineer,Middle,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing; Load Testing,1,2.0,120.25
+E0031,Zhanna Mukanova,QA Engineer,Middle,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0031,Zhanna Mukanova,QA Engineer,Middle,3,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0032,Daria Novikova,Product Manager,Junior,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0032,Daria Novikova,Product Manager,Junior,2,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,0,4.0,40.6667
+E0032,Daria Novikova,Product Manager,Junior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0032,Daria Novikova,Product Manager,Junior,4,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0033,Madina Tulegenova,Data Analyst,Senior,1,EV_021,A/B Testing Workshop,workshop,online,6,2026-11-19,A/B Testing; Product Analytics,1,2.0,120.3333
+E0033,Madina Tulegenova,Data Analyst,Senior,2,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization; Public Speaking,0,2.0,20.3333
+E0033,Madina Tulegenova,Data Analyst,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0033,Madina Tulegenova,Data Analyst,Senior,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0033,Madina Tulegenova,Data Analyst,Senior,5,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0034,Aruzhan Kassymova,Data Analyst,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0034,Aruzhan Kassymova,Data Analyst,Middle,2,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0036,Aigerim Baimukhanova,Product Manager,Junior,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0036,Aigerim Baimukhanova,Product Manager,Junior,2,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management,0,3.0,30.5
+E0036,Aigerim Baimukhanova,Product Manager,Junior,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0037,Zarina Sarsenbayeva,Frontend Engineer,Middle,1,EV_013,TypeScript in Depth,course,online,12,2026-10-21,TypeScript; JavaScript,1,2.0,120.1667
+E0037,Zarina Sarsenbayeva,Frontend Engineer,Middle,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving; Teamwork,0,2.0,20.5
+E0037,Zarina Sarsenbayeva,Frontend Engineer,Middle,3,EV_015,Web Performance Fundamentals,course,self_paced,6,self_paced,Web Performance,0,1.0,10.1667
+E0037,Zarina Sarsenbayeva,Frontend Engineer,Middle,4,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0039,Pavel Petrov,Data Analyst,Senior,1,EV_021,A/B Testing Workshop,workshop,online,6,2026-11-19,A/B Testing; Product Analytics,1,2.0,120.3333
+E0039,Pavel Petrov,Data Analyst,Senior,2,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization; Public Speaking,0,2.0,20.3333
+E0039,Pavel Petrov,Data Analyst,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0039,Pavel Petrov,Data Analyst,Senior,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0039,Pavel Petrov,Data Analyst,Senior,5,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0040,Irina Pavlova,Backend Engineer,Junior,1,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0041,Moldir Seitkali,Product Manager,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0042,Ekaterina Kuznetsova,Frontend Engineer,Middle,1,EV_013,TypeScript in Depth,course,online,12,2026-10-21,TypeScript; JavaScript,1,2.0,120.1667
+E0042,Ekaterina Kuznetsova,Frontend Engineer,Middle,2,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,1,1.0,110.0625
+E0042,Ekaterina Kuznetsova,Frontend Engineer,Middle,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0042,Ekaterina Kuznetsova,Frontend Engineer,Middle,4,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0042,Ekaterina Kuznetsova,Frontend Engineer,Middle,5,EV_005,System Design Fundamentals,course,online,16,2026-11-23,API Design,0,1.0,10.0625
+E0045,Kanat Temirkhanov,Sales Manager,Middle,1,EV_033,Consultative Selling & Prospecting,course,online,10,2026-10-23,Prospecting,1,1.0,110.1
+E0045,Kanat Temirkhanov,Sales Manager,Middle,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0045,Kanat Temirkhanov,Sales Manager,Middle,3,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Emotional Intelligence,0,1.0,10.25
+E0046,Dauren Zhumabekov,Sales Manager,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0047,Symbat Baimukhanova,Backend Engineer,Middle,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0048,Denis Smirnov,Data Analyst,Senior,1,EV_021,A/B Testing Workshop,workshop,online,6,2026-11-19,A/B Testing; Product Analytics,1,2.0,120.3333
+E0048,Denis Smirnov,Data Analyst,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0048,Denis Smirnov,Data Analyst,Senior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0048,Denis Smirnov,Data Analyst,Senior,4,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0049,Yulia Popova,Sales Manager,Junior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0049,Yulia Popova,Sales Manager,Junior,2,EV_033,Consultative Selling & Prospecting,course,online,10,2026-10-23,CRM Systems,0,1.0,10.1
+E0050,Symbat Abenova,Data Analyst,Lead,1,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization; Public Speaking,0,2.0,20.3333
+E0050,Symbat Abenova,Data Analyst,Lead,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0051,Kamila Abenova,Sales Manager,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0052,Maxim Kozlov,HR Business Partner,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0052,Maxim Kozlov,HR Business Partner,Middle,2,EV_031,Designing Learning Programs,workshop,online,6,2026-10-19,Public Speaking,0,1.0,10.1667
+E0053,Aigerim Abenova,QA Engineer,Middle,1,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0054,Dinara Sadykova,Data Analyst,Senior,1,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization; Public Speaking,0,2.0,20.3333
+E0054,Dinara Sadykova,Data Analyst,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0054,Dinara Sadykova,Data Analyst,Senior,3,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0056,Anna Kozlova,Sales Manager,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0056,Anna Kozlova,Sales Manager,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0058,Ksenia Pavlova,Backend Engineer,Junior,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0058,Ksenia Pavlova,Backend Engineer,Junior,2,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0059,Elena Ivanova,Sales Manager,Senior,1,EV_032,Negotiation Masterclass,workshop,offline,8,2026-10-15,Negotiation; Account Management,2,2.0,220.25
+E0059,Elena Ivanova,Sales Manager,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0059,Elena Ivanova,Sales Manager,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0061,Alibek Kaliyev,Data Analyst,Lead,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0063,Samat Baimukhanov,QA Engineer,Lead,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,1,1.0,110.0625
+E0064,Natalia Kuznetsova,Data Analyst,Senior,1,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0064,Natalia Kuznetsova,Data Analyst,Senior,2,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0064,Natalia Kuznetsova,Data Analyst,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0065,Madi Kassymov,QA Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0066,Madina Utepova,QA Engineer,Senior,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing; Load Testing,1,2.0,120.25
+E0066,Madina Utepova,QA Engineer,Senior,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0066,Madina Utepova,QA Engineer,Senior,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0066,Madina Utepova,QA Engineer,Senior,4,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0066,Madina Utepova,QA Engineer,Senior,5,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0067,Yerlan Nurlanov,Frontend Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0067,Yerlan Nurlanov,Frontend Engineer,Senior,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0067,Yerlan Nurlanov,Frontend Engineer,Senior,3,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0068,Gulnara Seitkali,Frontend Engineer,Middle,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0068,Gulnara Seitkali,Frontend Engineer,Middle,2,EV_016,Accessible Interfaces,workshop,online,4,2026-10-06,HTML & CSS,0,1.0,10.25
+E0069,Zhanna Bekova,Backend Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0069,Zhanna Bekova,Backend Engineer,Senior,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0069,Zhanna Bekova,Backend Engineer,Senior,3,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,CI/CD,0,1.0,10.05
+E0069,Zhanna Bekova,Backend Engineer,Senior,4,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0070,Daniyar Omarov,Customer Support Specialist,Lead,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0071,Nurlan Kaliyev,Product Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0071,Nurlan Kaliyev,Product Manager,Middle,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0072,Botagoz Abenova,QA Engineer,Middle,1,EV_018,Test Automation Bootcamp,course,online,24,2026-10-19,Test Automation; Java,0,2.0,20.0833
+E0072,Botagoz Abenova,QA Engineer,Middle,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0072,Botagoz Abenova,QA Engineer,Middle,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0074,Ksenia Lebedeva,Product Manager,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0074,Ksenia Lebedeva,Product Manager,Senior,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0074,Ksenia Lebedeva,Product Manager,Senior,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0075,Yulia Volkova,Frontend Engineer,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0075,Yulia Volkova,Frontend Engineer,Senior,2,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0076,Andrey Sokolov,QA Engineer,Middle,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing,1,1.0,110.125
+E0076,Andrey Sokolov,QA Engineer,Middle,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking; Teamwork,0,2.0,20.5
+E0076,Andrey Sokolov,QA Engineer,Middle,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0076,Andrey Sokolov,QA Engineer,Middle,4,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0077,Aizhan Ismailova,HR Business Partner,Middle,1,EV_028,Labor Law & Employee Relations,workshop,online,4,2026-10-12,Labor Law; Employee Relations,2,2.0,220.5
+E0077,Aizhan Ismailova,HR Business Partner,Middle,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Feedback,0,1.0,10.0833
+E0078,Roman Pavlov,Customer Support Specialist,Middle,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication; Communication,0,2.0,20.5
+E0078,Roman Pavlov,Customer Support Specialist,Middle,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring; Feedback,0,2.0,20.1667
+E0080,Natalia Petrova,Data Analyst,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0080,Natalia Petrova,Data Analyst,Lead,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0080,Natalia Petrova,Data Analyst,Lead,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0080,Natalia Petrova,Data Analyst,Lead,4,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0081,Nurlan Zhaksylykov,Customer Support Specialist,Senior,1,EV_035,Technical Troubleshooting Academy,course,online,16,2026-10-09,Technical Troubleshooting,1,1.0,110.0625
+E0081,Nurlan Zhaksylykov,Customer Support Specialist,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Conflict Resolution,0,1.0,10.0625
+E0082,Roman Popov,Frontend Engineer,Senior,1,EV_015,Web Performance Fundamentals,course,self_paced,6,self_paced,Web Performance,1,1.0,110.1667
+E0082,Roman Popov,Frontend Engineer,Senior,2,EV_016,Accessible Interfaces,workshop,online,4,2026-10-06,Web Accessibility; HTML & CSS,0,2.0,20.5
+E0082,Roman Popov,Frontend Engineer,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0082,Roman Popov,Frontend Engineer,Senior,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0082,Roman Popov,Frontend Engineer,Senior,5,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0083,Kirill Smirnov,Customer Support Specialist,Senior,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0084,Arman Nurlanov,HR Business Partner,Middle,1,EV_028,Labor Law & Employee Relations,workshop,online,4,2026-10-12,Labor Law; Employee Relations,2,2.0,220.5
+E0084,Arman Nurlanov,HR Business Partner,Middle,2,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution; Emotional Intelligence,0,2.0,20.5
+E0084,Arman Nurlanov,HR Business Partner,Middle,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0084,Arman Nurlanov,HR Business Partner,Middle,4,EV_030,Structured Interviewing,workshop,online,4,2026-10-20,Talent Acquisition,0,1.0,10.25
+E0084,Arman Nurlanov,HR Business Partner,Middle,5,EV_031,Designing Learning Programs,workshop,online,6,2026-10-19,Public Speaking,0,1.0,10.1667
+E0085,Zarina Tulegenova,Data Analyst,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0085,Zarina Tulegenova,Data Analyst,Lead,2,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0086,Maxim Sokolov,Customer Support Specialist,Middle,1,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management; Adaptability,0,2.0,20.6667
+E0087,Maxim Smirnov,Data Analyst,Middle,1,EV_020,Applied Statistics for Analysts,course,self_paced,40,self_paced,Statistics,1,1.0,110.025
+E0087,Maxim Smirnov,Data Analyst,Middle,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0087,Maxim Smirnov,Data Analyst,Middle,3,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0087,Maxim Smirnov,Data Analyst,Middle,4,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0087,Maxim Smirnov,Data Analyst,Middle,5,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,BI Tools,0,1.0,10.0833
+E0088,Rustem Seitkali,Backend Engineer,Lead,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,System Design; API Design,1,2.0,120.1667
+E0088,Rustem Seitkali,Backend Engineer,Lead,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0088,Rustem Seitkali,Backend Engineer,Lead,3,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0089,Madina Temirkhanova,Sales Manager,Middle,1,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Emotional Intelligence,0,1.0,10.25
+E0090,Irina Smirnova,Data Analyst,Senior,1,EV_021,A/B Testing Workshop,workshop,online,6,2026-11-19,A/B Testing; Statistics; Product Analytics,2,3.0,230.5
+E0090,Irina Smirnova,Data Analyst,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0090,Irina Smirnova,Data Analyst,Senior,3,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0090,Irina Smirnova,Data Analyst,Senior,4,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0090,Irina Smirnova,Data Analyst,Senior,5,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0092,Daniyar Sadykov,Backend Engineer,Middle,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving; Teamwork,0,2.0,20.5
+E0092,Daniyar Sadykov,Backend Engineer,Middle,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0093,Aizhan Zhaksylykova,QA Engineer,Middle,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing; Load Testing,1,2.0,120.25
+E0093,Aizhan Zhaksylykova,QA Engineer,Middle,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0095,Aruzhan Bekova,HR Business Partner,Middle,1,EV_031,Designing Learning Programs,workshop,online,6,2026-10-19,Learning Program Design; Public Speaking,0,2.0,20.3333
+E0095,Aruzhan Bekova,HR Business Partner,Middle,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0096,Indira Temirkhanova,Backend Engineer,Middle,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,API Design; Observability,1,2.0,120.1667
+E0096,Indira Temirkhanova,Backend Engineer,Middle,2,EV_005,System Design Fundamentals,course,online,16,2026-11-23,API Design,1,1.0,110.0625
+E0096,Indira Temirkhanova,Backend Engineer,Middle,3,EV_012,Advanced Python,course,self_paced,24,self_paced,Python,1,1.0,110.0417
+E0096,Indira Temirkhanova,Backend Engineer,Middle,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving; Teamwork,0,2.0,20.5
+E0096,Indira Temirkhanova,Backend Engineer,Middle,5,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration; CI/CD,0,2.0,20.1
+E0097,Olzhas Dzhakupov,Backend Engineer,Senior,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,API Design; Observability,1,2.0,120.1667
+E0097,Olzhas Dzhakupov,Backend Engineer,Senior,2,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration,0,1.0,10.05
+E0098,Azamat Baimukhanov,QA Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0098,Azamat Baimukhanov,QA Engineer,Senior,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0099,Ksenia Popova,HR Business Partner,Middle,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0099,Ksenia Popova,HR Business Partner,Middle,2,EV_030,Structured Interviewing,workshop,online,4,2026-10-20,Talent Acquisition,0,1.0,10.25
+E0100,Maria Ivanova,Product Manager,Middle,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0100,Maria Ivanova,Product Manager,Middle,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0100,Maria Ivanova,Product Manager,Middle,3,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0101,Sergey Morozov,Backend Engineer,Middle,1,EV_005,System Design Fundamentals,course,online,16,2026-11-23,System Design; API Design,1,2.0,120.125
+E0101,Sergey Morozov,Backend Engineer,Middle,2,EV_012,Advanced Python,course,self_paced,24,self_paced,Python,1,1.0,110.0417
+E0101,Sergey Morozov,Backend Engineer,Middle,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving; Teamwork,0,2.0,20.5
+E0101,Sergey Morozov,Backend Engineer,Middle,4,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration; CI/CD,0,2.0,20.1
+E0101,Sergey Morozov,Backend Engineer,Middle,5,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0103,Nikita Sokolov,QA Engineer,Lead,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0104,Andrey Pavlov,Sales Manager,Middle,1,EV_032,Negotiation Masterclass,workshop,offline,8,2026-10-15,Negotiation; Account Management,1,2.0,120.25
+E0104,Andrey Pavlov,Sales Manager,Middle,2,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Emotional Intelligence,0,1.0,10.25
+E0105,Saule Dzhakupova,Product Manager,Senior,1,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management,1,3.0,130.5
+E0105,Saule Dzhakupova,Product Manager,Senior,2,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,0,3.0,30.375
+E0105,Saule Dzhakupova,Product Manager,Senior,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0106,Pavel Volkov,Backend Engineer,Lead,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,System Design; API Design; Observability,1,3.0,130.25
+E0106,Pavel Volkov,Backend Engineer,Lead,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0106,Pavel Volkov,Backend Engineer,Lead,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0106,Pavel Volkov,Backend Engineer,Lead,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0106,Pavel Volkov,Backend Engineer,Lead,5,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0108,Irina Volkova,Data Analyst,Middle,1,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,SQL; BI Tools,1,2.0,120.1667
+E0108,Irina Volkova,Data Analyst,Middle,2,EV_020,Applied Statistics for Analysts,course,self_paced,40,self_paced,Statistics,1,1.0,110.025
+E0108,Irina Volkova,Data Analyst,Middle,3,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0108,Irina Volkova,Data Analyst,Middle,4,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0109,Artem Lebedev,Frontend Engineer,Senior,1,EV_015,Web Performance Fundamentals,course,self_paced,6,self_paced,Web Performance,1,1.0,110.1667
+E0109,Artem Lebedev,Frontend Engineer,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0109,Artem Lebedev,Frontend Engineer,Senior,3,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0109,Artem Lebedev,Frontend Engineer,Senior,4,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0110,Askar Zhaksylykov,QA Engineer,Junior,1,EV_018,Test Automation Bootcamp,course,online,24,2026-10-19,Test Automation; Java,0,2.0,20.0833
+E0110,Askar Zhaksylykov,QA Engineer,Junior,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0113,Ivan Pavlov,Product Manager,Junior,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; Requirements Writing,1,2.0,120.25
+E0113,Ivan Pavlov,Product Manager,Junior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0113,Ivan Pavlov,Product Manager,Junior,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0113,Ivan Pavlov,Product Manager,Junior,4,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0114,Serik Tulegenov,Customer Support Specialist,Middle,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Feedback,0,1.0,10.0833
+E0115,Zarina Kassymova,Frontend Engineer,Middle,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0115,Zarina Kassymova,Frontend Engineer,Middle,2,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0116,Zhanna Abenova,Product Manager,Senior,1,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Project Management; Stakeholder Management,2,3.0,230.5
+E0116,Zhanna Abenova,Product Manager,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0116,Zhanna Abenova,Product Manager,Senior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0116,Zhanna Abenova,Product Manager,Senior,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0116,Zhanna Abenova,Product Manager,Senior,5,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0117,Aidos Yessenov,Product Manager,Junior,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0117,Aidos Yessenov,Product Manager,Junior,2,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,0,4.0,40.6667
+E0117,Aidos Yessenov,Product Manager,Junior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0117,Aidos Yessenov,Product Manager,Junior,4,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0117,Aidos Yessenov,Product Manager,Junior,5,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0118,Maria Smirnova,Frontend Engineer,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0118,Maria Smirnova,Frontend Engineer,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0119,Artem Sokolov,Backend Engineer,Junior,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0119,Artem Sokolov,Backend Engineer,Junior,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0119,Artem Sokolov,Backend Engineer,Junior,3,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0121,Daniyar Sarsenbayev,Product Manager,Middle,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0121,Daniyar Sarsenbayev,Product Manager,Middle,2,EV_021,A/B Testing Workshop,workshop,online,6,2026-11-19,Product Analytics,1,1.0,110.1667
+E0121,Daniyar Sarsenbayev,Product Manager,Middle,3,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,0,4.0,40.6667
+E0121,Daniyar Sarsenbayev,Product Manager,Middle,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0122,Elena Sokolova,Frontend Engineer,Lead,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0122,Elena Sokolova,Frontend Engineer,Lead,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0122,Elena Sokolova,Frontend Engineer,Lead,3,EV_016,Accessible Interfaces,workshop,online,4,2026-10-06,Web Accessibility,0,1.0,10.25
+E0122,Elena Sokolova,Frontend Engineer,Lead,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0124,Ivan Sokolov,Data Analyst,Senior,1,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0124,Ivan Sokolov,Data Analyst,Senior,2,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0124,Ivan Sokolov,Data Analyst,Senior,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0125,Saule Temirkhanova,Sales Manager,Senior,1,EV_032,Negotiation Masterclass,workshop,offline,8,2026-10-15,Negotiation; Account Management,2,2.0,220.25
+E0125,Saule Temirkhanova,Sales Manager,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0125,Saule Temirkhanova,Sales Manager,Senior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0125,Saule Temirkhanova,Sales Manager,Senior,4,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Adaptability,0,1.0,10.3333
+E0125,Saule Temirkhanova,Sales Manager,Senior,5,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0126,Serik Utepov,QA Engineer,Middle,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing; Load Testing,1,2.0,120.25
+E0126,Serik Utepov,QA Engineer,Middle,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking; Teamwork,0,2.0,20.5
+E0126,Serik Utepov,QA Engineer,Middle,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0127,Zarina Sadykova,Backend Engineer,Middle,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,API Design; Observability,1,2.0,120.1667
+E0127,Zarina Sadykova,Backend Engineer,Middle,2,EV_005,System Design Fundamentals,course,online,16,2026-11-23,API Design,1,1.0,110.0625
+E0127,Zarina Sadykova,Backend Engineer,Middle,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving; Teamwork,0,2.0,20.5
+E0127,Zarina Sadykova,Backend Engineer,Middle,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0128,Azamat Kaliyev,Backend Engineer,Lead,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,System Design; Observability,1,2.0,120.1667
+E0128,Azamat Kaliyev,Backend Engineer,Lead,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0128,Azamat Kaliyev,Backend Engineer,Lead,3,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0128,Azamat Kaliyev,Backend Engineer,Lead,4,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration,0,1.0,10.05
+E0129,Victoria Kuznetsova,Sales Manager,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0129,Victoria Kuznetsova,Sales Manager,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0130,Aigerim Kassymova,QA Engineer,Senior,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0130,Aigerim Kassymova,QA Engineer,Senior,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0130,Aigerim Kassymova,QA Engineer,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0131,Serik Kaliyev,HR Business Partner,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Conflict Resolution; Stakeholder Management,1,3.0,130.1875
+E0131,Serik Kaliyev,HR Business Partner,Senior,2,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution; Emotional Intelligence,1,2.0,120.5
+E0131,Serik Kaliyev,HR Business Partner,Senior,3,EV_031,Designing Learning Programs,workshop,online,6,2026-10-19,Learning Program Design; Public Speaking,0,2.0,20.3333
+E0131,Serik Kaliyev,HR Business Partner,Senior,4,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0131,Serik Kaliyev,HR Business Partner,Senior,5,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0132,Daniyar Tulegenov,Data Analyst,Senior,1,EV_024,Machine Learning for Analysts,course,self_paced,30,self_paced,Machine Learning Fundamentals,0,1.0,10.0333
+E0134,Maxim Popov,Product Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0134,Maxim Popov,Product Manager,Middle,2,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0134,Maxim Popov,Product Manager,Middle,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0134,Maxim Popov,Product Manager,Middle,4,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Public Speaking,0,1.0,10.1667
+E0134,Maxim Popov,Product Manager,Middle,5,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,SQL,0,1.0,10.0833
+E0135,Marat Sarsenbayev,Data Analyst,Junior,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0135,Marat Sarsenbayev,Data Analyst,Junior,2,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0135,Marat Sarsenbayev,Data Analyst,Junior,3,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,BI Tools,0,1.0,10.0833
+E0135,Marat Sarsenbayev,Data Analyst,Junior,4,EV_020,Applied Statistics for Analysts,course,self_paced,40,self_paced,Statistics,0,1.0,10.025
+E0136,Rustem Sarsenbayev,Backend Engineer,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0136,Rustem Sarsenbayev,Backend Engineer,Senior,2,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration,0,1.0,10.05
+E0137,Natalia Sokolova,Backend Engineer,Middle,1,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms; CI/CD,0,2.0,20.05
+E0137,Natalia Sokolova,Backend Engineer,Middle,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0137,Natalia Sokolova,Backend Engineer,Middle,3,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,CI/CD,0,1.0,10.05
+E0138,Dmitry Petrov,Sales Manager,Lead,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0138,Dmitry Petrov,Sales Manager,Lead,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,1,1.0,110.0625
+E0138,Dmitry Petrov,Sales Manager,Lead,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0138,Dmitry Petrov,Sales Manager,Lead,4,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management,0,1.0,10.3333
+E0138,Dmitry Petrov,Sales Manager,Lead,5,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Emotional Intelligence,0,1.0,10.25
+E0139,Sergey Novikov,Customer Support Specialist,Lead,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring; Feedback,1,2.0,120.1667
+E0139,Sergey Novikov,Customer Support Specialist,Lead,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Conflict Resolution,1,2.0,120.125
+E0139,Sergey Novikov,Customer Support Specialist,Lead,3,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution; Emotional Intelligence,0,2.0,20.5
+E0139,Sergey Novikov,Customer Support Specialist,Lead,4,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0141,Kanat Nurlanov,Product Manager,Junior,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0141,Kanat Nurlanov,Product Manager,Junior,2,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,0,4.0,40.6667
+E0141,Kanat Nurlanov,Product Manager,Junior,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0142,Alibek Abenov,Sales Manager,Senior,1,EV_032,Negotiation Masterclass,workshop,offline,8,2026-10-15,Negotiation; Account Management,2,2.0,220.25
+E0142,Alibek Abenov,Sales Manager,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0142,Alibek Abenov,Sales Manager,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0143,Maria Lebedeva,Customer Support Specialist,Middle,1,EV_035,Technical Troubleshooting Academy,course,online,16,2026-10-09,Product Knowledge,0,1.0,10.0625
+E0145,Roman Novikov,QA Engineer,Lead,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0145,Roman Novikov,QA Engineer,Lead,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,1,1.0,110.0625
+E0145,Roman Novikov,QA Engineer,Lead,3,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,CI/CD,0,1.0,10.05
+E0146,Alibek Zhumabekov,Data Analyst,Junior,1,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,BI Tools,0,1.0,10.0833
+E0147,Ainur Dzhakupova,Frontend Engineer,Senior,1,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0147,Ainur Dzhakupova,Frontend Engineer,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0149,Kirill Popov,Sales Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0150,Daria Kozlova,Backend Engineer,Senior,1,EV_007,Architecture Review Circle,mentoring,online,8,2026-10-23,System Design; Communication,1,2.0,120.25
+E0150,Daria Kozlova,Backend Engineer,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0150,Daria Kozlova,Backend Engineer,Senior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0151,Daniyar Ismailov,HR Business Partner,Junior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0152,Ksenia Ivanova,Sales Manager,Junior,1,EV_033,Consultative Selling & Prospecting,course,online,10,2026-10-23,Prospecting; CRM Systems,0,2.0,20.2
+E0153,Yerzhan Kaliyev,Sales Manager,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0153,Yerzhan Kaliyev,Sales Manager,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0154,Elena Novikova,Frontend Engineer,Senior,1,EV_015,Web Performance Fundamentals,course,self_paced,6,self_paced,Web Performance,1,1.0,110.1667
+E0154,Elena Novikova,Frontend Engineer,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0154,Elena Novikova,Frontend Engineer,Senior,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0154,Elena Novikova,Frontend Engineer,Senior,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0154,Elena Novikova,Frontend Engineer,Senior,5,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0155,Indira Zhaksylykova,Backend Engineer,Senior,1,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration; CI/CD,0,2.0,20.1
+E0155,Indira Zhaksylykova,Backend Engineer,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0155,Indira Zhaksylykova,Backend Engineer,Senior,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0155,Indira Zhaksylykova,Backend Engineer,Senior,4,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0155,Indira Zhaksylykova,Backend Engineer,Senior,5,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0156,Madi Baimukhanov,QA Engineer,Middle,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0156,Madi Baimukhanov,QA Engineer,Middle,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0156,Madi Baimukhanov,QA Engineer,Middle,3,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0157,Andrey Morozov,QA Engineer,Middle,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing,1,1.0,110.125
+E0158,Artem Volkov,Sales Manager,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0159,Azamat Temirkhanov,Sales Manager,Junior,1,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management,0,1.0,10.3333
+E0161,Anna Morozova,Sales Manager,Lead,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0161,Anna Morozova,Sales Manager,Lead,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0161,Anna Morozova,Sales Manager,Lead,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0161,Anna Morozova,Sales Manager,Lead,4,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0162,Daniyar Kassymov,Data Analyst,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0162,Daniyar Kassymov,Data Analyst,Senior,2,EV_025,Dimensional Data Modeling,course,online,10,2026-10-13,Data Modeling,0,1.0,10.1
+E0162,Daniyar Kassymov,Data Analyst,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Stakeholder Management,0,1.0,10.0625
+E0163,Botagoz Bekova,Sales Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0164,Askar Akhmetov,Data Analyst,Middle,1,EV_020,Applied Statistics for Analysts,course,self_paced,40,self_paced,Statistics,1,1.0,110.025
+E0164,Askar Akhmetov,Data Analyst,Middle,2,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0164,Askar Akhmetov,Data Analyst,Middle,3,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,BI Tools,0,1.0,10.0833
+E0165,Olga Popova,Product Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0165,Olga Popova,Product Manager,Middle,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0166,Aliya Bekova,Sales Manager,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0167,Bekzat Baimukhanov,HR Business Partner,Middle,1,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution; Emotional Intelligence,0,2.0,20.5
+E0167,Bekzat Baimukhanov,HR Business Partner,Middle,2,EV_031,Designing Learning Programs,workshop,online,6,2026-10-19,Learning Program Design; Public Speaking,0,2.0,20.3333
+E0167,Bekzat Baimukhanov,HR Business Partner,Middle,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0167,Bekzat Baimukhanov,HR Business Partner,Middle,4,EV_029,People Analytics & Total Rewards,course,self_paced,12,self_paced,HR Analytics,0,1.0,10.0833
+E0167,Bekzat Baimukhanov,HR Business Partner,Middle,5,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Feedback,0,1.0,10.0833
+E0168,Moldir Omarova,Customer Support Specialist,Senior,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring; Feedback,1,2.0,120.1667
+E0168,Moldir Omarova,Customer Support Specialist,Senior,2,EV_035,Technical Troubleshooting Academy,course,online,16,2026-10-09,Technical Troubleshooting; Product Knowledge,1,2.0,120.125
+E0168,Moldir Omarova,Customer Support Specialist,Senior,3,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Adaptability,0,1.0,10.3333
+E0168,Moldir Omarova,Customer Support Specialist,Senior,4,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0168,Moldir Omarova,Customer Support Specialist,Senior,5,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0169,Aruzhan Kaliyeva,Product Manager,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0170,Bekzat Dzhakupov,Frontend Engineer,Middle,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0170,Bekzat Dzhakupov,Frontend Engineer,Middle,2,EV_005,System Design Fundamentals,course,online,16,2026-11-23,API Design,0,1.0,10.0625
+E0170,Bekzat Dzhakupov,Frontend Engineer,Middle,3,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0171,Akmaral Baimukhanova,QA Engineer,Senior,1,EV_019,API & Performance Testing Workshop,workshop,offline,8,2026-10-16,API Testing; Load Testing,1,2.0,120.25
+E0171,Akmaral Baimukhanova,QA Engineer,Senior,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking; Teamwork,0,2.0,20.5
+E0171,Akmaral Baimukhanova,QA Engineer,Senior,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0171,Akmaral Baimukhanova,QA Engineer,Senior,4,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0172,Madi Temirkhanov,HR Business Partner,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0173,Timur Sadykov,HR Business Partner,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0173,Timur Sadykov,HR Business Partner,Senior,2,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Emotional Intelligence,0,1.0,10.25
+E0174,Alibek Mukanov,Sales Manager,Middle,1,EV_033,Consultative Selling & Prospecting,course,online,10,2026-10-23,Prospecting; CRM Systems,1,2.0,120.2
+E0174,Alibek Mukanov,Sales Manager,Middle,2,EV_032,Negotiation Masterclass,workshop,offline,8,2026-10-15,Negotiation,1,1.0,110.125
+E0174,Alibek Mukanov,Sales Manager,Middle,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0174,Alibek Mukanov,Sales Manager,Middle,4,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management,0,1.0,10.3333
+E0174,Alibek Mukanov,Sales Manager,Middle,5,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Emotional Intelligence,0,1.0,10.25
+E0175,Aidos Nurlanov,Backend Engineer,Lead,1,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0176,Aizhan Nurlanova,Product Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0177,Dana Kassymova,Customer Support Specialist,Senior,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0177,Dana Kassymova,Customer Support Specialist,Senior,2,EV_039,Time & Priority Management,workshop,online,3,2026-11-25,Time Management; Adaptability,0,2.0,20.6667
+E0177,Dana Kassymova,Customer Support Specialist,Senior,3,EV_034,Handling Difficult Conversations,workshop,online,4,2026-10-16,Conflict Resolution; Customer Service,0,2.0,20.5
+E0177,Dana Kassymova,Customer Support Specialist,Senior,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0177,Dana Kassymova,Customer Support Specialist,Senior,5,EV_038,Leadership Foundations,course,online,16,2026-10-08,Conflict Resolution,0,1.0,10.0625
+E0178,Yerlan Kaliyev,Backend Engineer,Middle,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0178,Yerlan Kaliyev,Backend Engineer,Middle,2,EV_005,System Design Fundamentals,course,online,16,2026-11-23,System Design,0,1.0,10.0625
+E0178,Yerlan Kaliyev,Backend Engineer,Middle,3,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms,0,1.0,10.025
+E0179,Zhandos Bekov,QA Engineer,Lead,1,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Written Communication,0,1.0,10.25
+E0181,Irina Kozlova,Product Manager,Senior,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0181,Irina Kozlova,Product Manager,Senior,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0182,Alibek Omarov,Frontend Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0182,Alibek Omarov,Frontend Engineer,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0182,Alibek Omarov,Frontend Engineer,Senior,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0183,Alexey Sokolov,Frontend Engineer,Senior,1,EV_016,Accessible Interfaces,workshop,online,4,2026-10-06,Web Accessibility; HTML & CSS,0,2.0,20.5
+E0183,Alexey Sokolov,Frontend Engineer,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0183,Alexey Sokolov,Frontend Engineer,Senior,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0183,Alexey Sokolov,Frontend Engineer,Senior,4,EV_017,React Patterns & State Management,course,online,16,2026-10-16,React,0,1.0,10.0625
+E0183,Alexey Sokolov,Frontend Engineer,Senior,5,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,CI/CD,0,1.0,10.025
+E0184,Saule Omarova,Backend Engineer,Senior,1,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms; CI/CD,0,2.0,20.05
+E0184,Saule Omarova,Backend Engineer,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0184,Saule Omarova,Backend Engineer,Senior,3,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Problem Solving,0,1.0,10.25
+E0184,Saule Omarova,Backend Engineer,Senior,4,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0184,Saule Omarova,Backend Engineer,Senior,5,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0185,Togzhan Zhaksylykova,Customer Support Specialist,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Conflict Resolution,0,2.0,20.125
+E0186,Natalia Popova,Backend Engineer,Middle,1,EV_005,System Design Fundamentals,course,online,16,2026-11-23,API Design,1,1.0,110.0625
+E0188,Natalia Pavlova,Data Analyst,Junior,1,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,SQL,1,1.0,110.0833
+E0188,Natalia Pavlova,Data Analyst,Junior,2,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0189,Sergey Smirnov,QA Engineer,Senior,1,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0190,Marat Mukanov,Backend Engineer,Lead,1,EV_006,Designing High-Load Systems,workshop,offline,12,2026-10-07,System Design,1,1.0,110.0833
+E0190,Marat Mukanov,Backend Engineer,Lead,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,1,1.0,110.0833
+E0190,Marat Mukanov,Backend Engineer,Lead,3,EV_008,Business Writing & Documentation,workshop,online,4,2026-10-12,Communication,0,1.0,10.25
+E0190,Marat Mukanov,Backend Engineer,Lead,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Teamwork,0,1.0,10.25
+E0190,Marat Mukanov,Backend Engineer,Lead,5,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
+E0191,Askar Seitkali,Sales Manager,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,0,2.0,20.125
+E0191,Askar Seitkali,Sales Manager,Senior,2,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0191,Askar Seitkali,Sales Manager,Senior,3,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0192,Irina Morozova,Data Analyst,Junior,1,EV_023,Data Storytelling & Visualization,workshop,offline,6,2026-10-21,Data Visualization,0,1.0,10.1667
+E0192,Irina Morozova,Data Analyst,Junior,2,EV_022,SQL & BI for Analytics,course,online,12,2026-10-20,BI Tools,0,1.0,10.0833
+E0192,Irina Morozova,Data Analyst,Junior,3,EV_020,Applied Statistics for Analysts,course,self_paced,40,self_paced,Statistics,0,1.0,10.025
+E0193,Bekzat Yessenov,Product Manager,Middle,1,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,1,3.0,130.375
+E0193,Bekzat Yessenov,Product Manager,Middle,2,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,0,4.0,40.6667
+E0193,Bekzat Yessenov,Product Manager,Middle,3,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0194,Natalia Volkova,Product Manager,Senior,1,EV_027,Roadmapping & Agile Planning,workshop,online,6,2026-10-22,Roadmapping & Prioritization; Agile Practices; Project Management; Stakeholder Management,2,4.0,240.6667
+E0194,Natalia Volkova,Product Manager,Senior,2,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership; Stakeholder Management,1,2.0,120.125
+E0194,Natalia Volkova,Product Manager,Senior,3,EV_026,Product Discovery Lab,workshop,offline,8,2026-11-10,Product Discovery; UX Research; Requirements Writing,0,3.0,30.375
+E0194,Natalia Volkova,Product Manager,Senior,4,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0195,Irina Ivanova,Product Manager,Senior,1,EV_040,Structured Problem Solving,workshop,offline,4,2026-11-09,Critical Thinking,0,1.0,10.25
+E0195,Irina Ivanova,Product Manager,Senior,2,EV_037,Mentor Track,mentoring,online,12,2026-11-19,Mentoring,0,1.0,10.0833
+E0195,Irina Ivanova,Product Manager,Senior,3,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0196,Olzhas Utepov,Backend Engineer,Middle,1,EV_012,Advanced Python,course,self_paced,24,self_paced,Python,1,1.0,110.0417
+E0196,Olzhas Utepov,Backend Engineer,Middle,2,EV_010,Kubernetes in Practice,course,online,20,2026-10-16,Containers & Orchestration; CI/CD,0,2.0,20.1
+E0196,Olzhas Utepov,Backend Engineer,Middle,3,EV_009,Cloud Certification Prep,certification,self_paced,40,self_paced,Cloud Platforms; CI/CD,0,2.0,20.05
+E0197,Akmaral Zhaksylykova,QA Engineer,Senior,1,EV_038,Leadership Foundations,course,online,16,2026-10-08,Leadership,0,1.0,10.0625
+E0198,Saule Akhmetova,Sales Manager,Middle,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0199,Ekaterina Petrova,Data Analyst,Lead,1,EV_036,Public Speaking Club,meetup,offline,2,2026-10-08,Public Speaking,0,1.0,10.5
+E0200,Irina Kuznetsova,Backend Engineer,Junior,1,EV_011,Secure Coding Workshop,workshop,offline,6,2026-11-23,Application Security,0,1.0,10.1667
