@@ -1,0 +1,21 @@
+{
+  "backend\\app\\agent_tools.py": "9837d6f81acb51b574b7cb72191ab353ee21a47a91c3abfe9d049dbd088339e6",
+  "backend\\app\\assistant.py": "b97c4899bb457834690c4a2095ddf048816d22e5d33fff7a2224470a89fc55f1",
+  "backend\\app\\auth.py": "34f7bac42090af8af39f6684d6ba22ba83e2ae38467a87483fc265ffef47faac",
+  "backend\\app\\config.py": "80fa8fd2a7f39041a8c23fcbefd79f72584cff13403e36358aaf670bee8604f3",
+  "backend\\app\\database.py": "c3dfe16c02723bdb7e78cad7cb9de40557eeb9226f1a10aa855a067932ca0da0",
+  "backend\\app\\main.py": "7332f7b3765421f60577dcbb4b3dc982bbb97ed50849d11ba9b3e825b30fc3f5",
+  "backend\\app\\recommendation.py": "f3bc3ffc0f11d66d83101a1088c992029ee7c26611d79a431b4f3fa11f00f0d3",
+  "backend\\app\\routes.py": "c90d7bb6db3beefa240b3b8362158be765406da878574a223a947da1cd45e66e",
+  "backend\\app\\__init__.py": "b0a553089a6077262ca123b6019d9a85246266819135d7d91431c5c9edffaf63",
+  "frontend\\components\\CareerPath.tsx": "ce6d3d9a75fd3f3623ead4cd1f629edfd0768443cde254091ec2f8299f690ba9",
+  "frontend\\components\\HrSummary.tsx": "1560603b7261a767a7d9de41a6bf1e7225012511bee822a4d71a2223d0c4dcd2",
+  "frontend\\components\\QuestApp.tsx": "6aab2a6413b22dc99b7740800f448ab3cbede31820f84baf779a5ebaba53c8c5",
+  "frontend\\components\\QuestIcon.tsx": "5914f6a02aecabed5d79c93ac22b3d7d69df5972053a73c59997947689d2ba45",
+  "frontend\\components\\QuestViews.tsx": "29da2965b756d5ba2fee6d39129211bf779bc4b864650c638ed562c9f6298645",
+  "frontend\\components\\RecommendationCard.tsx": "cffbe0f9b52056aab559ee4ab1e8d2f54afba3296d437df6cc381870fe4403ae",
+  "frontend\\components\\ScoreBreakdown.tsx": "16370161d9abe8cf6b737347686c37a2c3a9dc368627cc0c9c20212b16005862",
+  "frontend\\components\\SkillGapList.tsx": "337ba423ba7a61f8b2144c9f3bd9034217938be7e44f90bb59aa98509efba3ac",
+  "README.md": "d011a7381c35fddbf1e694757549d5e27a9ae5bed4d5af865d053b0c0bdde485",
+  "run.ps1": "2f6178e38f334b182562110ef8f2136712856d3262f57451d999ae92da872678"
+}

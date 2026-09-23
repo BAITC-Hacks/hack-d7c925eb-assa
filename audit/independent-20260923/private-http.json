@@ -1,0 +1,12 @@
+{
+  "bound_employee": "E0001",
+  "hr_with_employee_code": 401,
+  "own_profile": 200,
+  "other_history_profile": 403,
+  "hr_summary_employee": 403,
+  "hr_summary_hr": 200,
+  "hr_other_department": 403,
+  "demo_listing": 403,
+  "fake_hr_prompt": 403,
+  "other_person_prompt": 403
+}

@@ -1,0 +1,15 @@
+ M FIX_PLAN.md
+ M Plan.md
+ M README.md
+ D audit/clean-copy-path.txt
+ M backend/app/agent_tools.py
+ M backend/app/assistant.py
+ M backend/app/auth.py
+ M backend/app/recommendation.py
+ M backend/scripts/import_dataset.py
+ M backend/tests/test_iteration.py
+ M frontend/components/QuestViews.tsx
+ M frontend/components/SkillGapList.tsx
+ M frontend/lib/types.ts
+?? audit/IMPLEMENTATION.md
+?? audit/independent-20260923/

@@ -1,0 +1,14 @@
+{
+  "rollback": {
+    "rejected": true,
+    "message": "Импорт отменён; база не изменена:\nemployees[1]: неверный навык/уровень",
+    "count_before": 204,
+    "count_after": 204
+  },
+  "malformed_json": "Expecting property name enclosed in double quotes: line 1 column 3 (char 2)",
+  "invalid_enums_future_review": {
+    "employees_added": 1,
+    "history_added": 0,
+    "duplicates": 0
+  }
+}

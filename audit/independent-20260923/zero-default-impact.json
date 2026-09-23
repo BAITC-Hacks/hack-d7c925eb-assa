@@ -1,0 +1,586 @@
+{
+  "recommendation_changes": [
+    {
+      "employee": "E0004",
+      "before": [
+        "EV_021"
+      ],
+      "zero_default": [
+        "EV_021"
+      ],
+      "gap_before": 3.0,
+      "gap_zero_default": 18.0
+    },
+    {
+      "employee": "E0009",
+      "before": [
+        "EV_008"
+      ],
+      "zero_default": [
+        "EV_008"
+      ],
+      "gap_before": 1.0,
+      "gap_zero_default": 6.0
+    },
+    {
+      "employee": "E0013",
+      "before": [
+        "EV_036"
+      ],
+      "zero_default": [
+        "EV_036",
+        "EV_025"
+      ],
+      "gap_before": 8.0,
+      "gap_zero_default": 31.0
+    },
+    {
+      "employee": "E0014",
+      "before": [
+        "EV_040",
+        "EV_037",
+        "EV_038"
+      ],
+      "zero_default": [
+        "EV_040",
+        "EV_037",
+        "EV_038"
+      ],
+      "gap_before": 6.0,
+      "gap_zero_default": 40.0
+    },
+    {
+      "employee": "E0020",
+      "before": [
+        "EV_022"
+      ],
+      "zero_default": [
+        "EV_022",
+        "EV_023",
+        "EV_020"
+      ],
+      "gap_before": 1.0,
+      "gap_zero_default": 7.0
+    },
+    {
+      "employee": "E0031",
+      "before": [
+        "EV_040"
+      ],
+      "zero_default": [
+        "EV_040"
+      ],
+      "gap_before": 3.0,
+      "gap_zero_default": 17.0
+    },
+    {
+      "employee": "E0032",
+      "before": [
+        "EV_023",
+        "EV_036"
+      ],
+      "zero_default": [
+        "EV_023",
+        "EV_036"
+      ],
+      "gap_before": 5.0,
+      "gap_zero_default": 13.0
+    },
+    {
+      "employee": "E0036",
+      "before": [
+        "EV_008"
+      ],
+      "zero_default": [
+        "EV_008"
+      ],
+      "gap_before": 1.0,
+      "gap_zero_default": 10.0
+    },
+    {
+      "employee": "E0050",
+      "before": [
+        "EV_036"
+      ],
+      "zero_default": [
+        "EV_036"
+      ],
+      "gap_before": 7.0,
+      "gap_zero_default": 29.0
+    },
+    {
+      "employee": "E0064",
+      "before": [
+        "EV_038"
+      ],
+      "zero_default": [
+        "EV_025",
+        "EV_038"
+      ],
+      "gap_before": 3.0,
+      "gap_zero_default": 26.0
+    },
+    {
+      "employee": "E0087",
+      "before": [
+        "EV_040"
+      ],
+      "zero_default": [
+        "EV_025",
+        "EV_040"
+      ],
+      "gap_before": 4.0,
+      "gap_zero_default": 19.0
+    },
+    {
+      "employee": "E0105",
+      "before": [
+        "EV_040"
+      ],
+      "zero_default": [
+        "EV_040"
+      ],
+      "gap_before": 3.0,
+      "gap_zero_default": 33.0
+    },
+    {
+      "employee": "E0108",
+      "before": [
+        "EV_022"
+      ],
+      "zero_default": [
+        "EV_023",
+        "EV_022",
+        "EV_020"
+      ],
+      "gap_before": 5.0,
+      "gap_zero_default": 16.0
+    },
+    {
+      "employee": "E0117",
+      "before": [
+        "EV_036",
+        "EV_040",
+        "EV_008"
+      ],
+      "zero_default": [
+        "EV_036",
+        "EV_040",
+        "EV_008"
+      ],
+      "gap_before": 4.0,
+      "gap_zero_default": 13.0
+    },
+    {
+      "employee": "E0121",
+      "before": [
+        "EV_021"
+      ],
+      "zero_default": [
+        "EV_021"
+      ],
+      "gap_before": 5.0,
+      "gap_zero_default": 20.0
+    },
+    {
+      "employee": "E0135",
+      "before": [
+        "EV_008"
+      ],
+      "zero_default": [
+        "EV_008"
+      ],
+      "gap_before": 2.0,
+      "gap_zero_default": 7.0
+    },
+    {
+      "employee": "E0141",
+      "before": [
+        "EV_008"
+      ],
+      "zero_default": [
+        "EV_008"
+      ],
+      "gap_before": 3.0,
+      "gap_zero_default": 12.0
+    },
+    {
+      "employee": "E0193",
+      "before": [
+        "EV_036"
+      ],
+      "zero_default": [
+        "EV_036"
+      ],
+      "gap_before": 5.0,
+      "gap_zero_default": 20.0
+    },
+    {
+      "employee": "E0194",
+      "before": [
+        "EV_038",
+        "EV_040"
+      ],
+      "zero_default": [
+        "EV_038",
+        "EV_040"
+      ],
+      "gap_before": 5.0,
+      "gap_zero_default": 35.0
+    }
+  ],
+  "hr_zero_default": {
+    "department": "Backend Development",
+    "employee_count": 44,
+    "top_gaps": [
+      {
+        "name": "Cloud Platforms",
+        "employees": 23
+      },
+      {
+        "name": "Mentoring",
+        "employees": 21
+      },
+      {
+        "name": "Containers & Orchestration",
+        "employees": 21
+      },
+      {
+        "name": "System Design",
+        "employees": 20
+      },
+      {
+        "name": "Application Security",
+        "employees": 19
+      }
+    ],
+    "employees_without_recommendations": [
+      {
+        "employee_id": "E0026",
+        "full_name": "Ainur Utepova",
+        "target_role": "Backend Engineer",
+        "reasons": [
+          {
+            "reason": "Активность уже завершена",
+            "events": 8
+          },
+          {
+            "reason": "Не сокращает оставшийся разрыв с учётом предела навыка",
+            "events": 5
+          }
+        ]
+      },
+      {
+        "employee_id": "E0164",
+        "full_name": "Askar Akhmetov",
+        "target_role": "Data Analyst",
+        "reasons": [
+          {
+            "reason": "Активность уже завершена",
+            "events": 8
+          },
+          {
+            "reason": "Не сокращает оставшийся разрыв с учётом предела навыка",
+            "events": 6
+          }
+        ]
+      },
+      {
+        "employee_id": "E0192",
+        "full_name": "Irina Morozova",
+        "target_role": "Data Analyst",
+        "reasons": [
+          {
+            "reason": "Активность уже завершена",
+            "events": 7
+          },
+          {
+            "reason": "Не сокращает оставшийся разрыв с учётом предела навыка",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "employee_id": "E0023",
+        "full_name": "Zhanna Baimukhanova",
+        "target_role": "Backend Engineer",
+        "reasons": [
+          {
+            "reason": "Активность уже завершена",
+            "events": 7
+          },
+          {
+            "reason": "Не сокращает оставшийся разрыв с учётом предела навыка",
+            "events": 1
+          }
+        ]
+      }
+    ],
+    "participation": {
+      "total_records": 537,
+      "completed": 414,
+      "completion_rate": 77.1,
+      "statuses": {
+        "completed": 414,
+        "declined": 23,
+        "dropped": 48,
+        "in_progress": 2,
+        "no_show": 38,
+        "overdue": 12
+      }
+    },
+    "events": [
+      {
+        "event_id": "EV_003",
+        "title": "Code of Conduct & Workplace Safety",
+        "participants": 78,
+        "completed": 77
+      },
+      {
+        "event_id": "EV_002",
+        "title": "Personal Data Protection",
+        "participants": 73,
+        "completed": 69
+      },
+      {
+        "event_id": "EV_001",
+        "title": "Information Security Awareness",
+        "participants": 71,
+        "completed": 64
+      },
+      {
+        "event_id": "EV_012",
+        "title": "Advanced Python",
+        "participants": 29,
+        "completed": 16
+      },
+      {
+        "event_id": "EV_036",
+        "title": "Public Speaking Club",
+        "participants": 28,
+        "completed": 15
+      },
+      {
+        "event_id": "EV_040",
+        "title": "Structured Problem Solving",
+        "participants": 27,
+        "completed": 18
+      },
+      {
+        "event_id": "EV_005",
+        "title": "System Design Fundamentals",
+        "participants": 27,
+        "completed": 17
+      },
+      {
+        "event_id": "EV_009",
+        "title": "Cloud Certification Prep",
+        "participants": 23,
+        "completed": 11
+      },
+      {
+        "event_id": "EV_006",
+        "title": "Designing High-Load Systems",
+        "participants": 23,
+        "completed": 16
+      },
+      {
+        "event_id": "EV_037",
+        "title": "Mentor Track",
+        "participants": 22,
+        "completed": 15
+      },
+      {
+        "event_id": "EV_011",
+        "title": "Secure Coding Workshop",
+        "participants": 20,
+        "completed": 12
+      },
+      {
+        "event_id": "EV_010",
+        "title": "Kubernetes in Practice",
+        "participants": 19,
+        "completed": 14
+      },
+      {
+        "event_id": "EV_007",
+        "title": "Architecture Review Circle",
+        "participants": 19,
+        "completed": 11
+      },
+      {
+        "event_id": "EV_008",
+        "title": "Business Writing & Documentation",
+        "participants": 17,
+        "completed": 13
+      },
+      {
+        "event_id": "EV_004",
+        "title": "New Employee Onboarding",
+        "participants": 17,
+        "completed": 17
+      },
+      {
+        "event_id": "EV_019",
+        "title": "API & Performance Testing Workshop",
+        "participants": 13,
+        "completed": 8
+      },
+      {
+        "event_id": "EV_039",
+        "title": "Time & Priority Management",
+        "participants": 12,
+        "completed": 8
+      },
+      {
+        "event_id": "EV_038",
+        "title": "Leadership Foundations",
+        "participants": 12,
+        "completed": 8
+      },
+      {
+        "event_id": "EV_025",
+        "title": "Dimensional Data Modeling",
+        "participants": 7,
+        "completed": 5
+      }
+    ]
+  },
+  "no_goal_examples": [
+    {
+      "employee": {
+        "employee_id": "E0003",
+        "full_name": "Symbat Omarova",
+        "department": "Customer Support",
+        "role": "Customer Support Specialist",
+        "grade": "Senior",
+        "manager_id": "E0035",
+        "tenure_months": 84,
+        "work_format": "hybrid",
+        "preferred_language": "kk",
+        "last_review_date": "2026-02-13"
+      },
+      "target": {
+        "role": "Customer Support Specialist",
+        "grade": "Senior",
+        "source": "current_profile"
+      },
+      "progress": {
+        "total_required": 14,
+        "unknown_required": 0,
+        "confirmed_ready": 9,
+        "expected_ready": 10,
+        "remaining_gap": 6,
+        "expected_remaining_gap": 5.0
+      }
+    },
+    {
+      "employee": {
+        "employee_id": "E0006",
+        "full_name": "Arman Sadykov",
+        "department": "Frontend Development",
+        "role": "Frontend Engineer",
+        "grade": "Lead",
+        "manager_id": null,
+        "tenure_months": 104,
+        "work_format": "office",
+        "preferred_language": "kk",
+        "last_review_date": "2026-09-21"
+      },
+      "target": {
+        "role": "Frontend Engineer",
+        "grade": "Lead",
+        "source": "current_profile"
+      },
+      "progress": {
+        "total_required": 15,
+        "unknown_required": 0,
+        "confirmed_ready": 10,
+        "expected_ready": 10,
+        "remaining_gap": 9,
+        "expected_remaining_gap": 9.0
+      }
+    },
+    {
+      "employee": {
+        "employee_id": "E0008",
+        "full_name": "Botagoz Sadykova",
+        "department": "Frontend Development",
+        "role": "Frontend Engineer",
+        "grade": "Senior",
+        "manager_id": "E0006",
+        "tenure_months": 22,
+        "work_format": "remote",
+        "preferred_language": "en",
+        "last_review_date": "2026-01-26"
+      },
+      "target": {
+        "role": "Frontend Engineer",
+        "grade": "Senior",
+        "source": "current_profile"
+      },
+      "progress": {
+        "total_required": 15,
+        "unknown_required": 0,
+        "confirmed_ready": 9,
+        "expected_ready": 9,
+        "remaining_gap": 7,
+        "expected_remaining_gap": 7.0
+      }
+    },
+    {
+      "employee": {
+        "employee_id": "E0011",
+        "full_name": "Anna Lebedeva",
+        "department": "Data & Analytics",
+        "role": "Data Analyst",
+        "grade": "Senior",
+        "manager_id": "E0085",
+        "tenure_months": 68,
+        "work_format": "office",
+        "preferred_language": "kk",
+        "last_review_date": "2026-07-07"
+      },
+      "target": {
+        "role": "Data Analyst",
+        "grade": "Senior",
+        "source": "current_profile"
+      },
+      "progress": {
+        "total_required": 15,
+        "unknown_required": 0,
+        "confirmed_ready": 7,
+        "expected_ready": 7,
+        "remaining_gap": 10,
+        "expected_remaining_gap": 10.0
+      }
+    },
+    {
+      "employee": {
+        "employee_id": "E0021",
+        "full_name": "Botagoz Zhumabekova",
+        "department": "Customer Support",
+        "role": "Customer Support Specialist",
+        "grade": "Middle",
+        "manager_id": "E0180",
+        "tenure_months": 24,
+        "work_format": "remote",
+        "preferred_language": "ru",
+        "last_review_date": "2026-06-02"
+      },
+      "target": {
+        "role": "Customer Support Specialist",
+        "grade": "Middle",
+        "source": "current_profile"
+      },
+      "progress": {
+        "total_required": 13,
+        "unknown_required": 0,
+        "confirmed_ready": 12,
+        "expected_ready": 12,
+        "remaining_gap": 1,
+        "expected_remaining_gap": 1.0
+      }
+    }
+  ]
+}

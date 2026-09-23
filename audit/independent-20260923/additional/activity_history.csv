@@ -1,0 +1,8 @@
+record_id,employee_id,event_id,date,due_date,status,completion_pct,score,feedback_rating,assigned_by
+AUD_N0,E9901,EV_036,2026-08-10,,no_show,0,,,self
+AUD_N1,E9901,EV_036,2026-08-11,,no_show,0,,,self
+AUD_N2,E9901,EV_036,2026-08-12,,no_show,0,,,self
+AUD_M,E9902,EV_005,2026-09-20,,completed,100,,,self
+AUD_CAP,E9903,EV_005,2026-09-20,,completed,100,,,self
+AUD_D1,E9904,EV_005,2026-09-20,,completed,100,,,self
+AUD_D2,E9904,EV_005,2026-09-21,,completed,100,,,self

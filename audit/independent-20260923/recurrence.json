@@ -1,0 +1,54 @@
+{
+  "first": {
+    "status": 200,
+    "already_completed": false,
+    "skill": {
+      "skill_id": "SK_PUBLIC_SPEAKING",
+      "name": "Public Speaking",
+      "type": "soft",
+      "category": "communication",
+      "current_level": 0,
+      "description": "Presenting confidently to groups.",
+      "expected_level": 1.0,
+      "required_level": 2,
+      "gap": 2,
+      "expected_gap": 1.0,
+      "critical": false
+    }
+  },
+  "retry": {
+    "status": 200,
+    "already_completed": true,
+    "skill": {
+      "skill_id": "SK_PUBLIC_SPEAKING",
+      "name": "Public Speaking",
+      "type": "soft",
+      "category": "communication",
+      "current_level": 0,
+      "description": "Presenting confidently to groups.",
+      "expected_level": 1.0,
+      "required_level": 2,
+      "gap": 2,
+      "expected_gap": 1.0,
+      "critical": false
+    }
+  },
+  "second": {
+    "status": 200,
+    "already_completed": false,
+    "skill": {
+      "skill_id": "SK_PUBLIC_SPEAKING",
+      "name": "Public Speaking",
+      "type": "soft",
+      "category": "communication",
+      "current_level": 0,
+      "description": "Presenting confidently to groups.",
+      "expected_level": 2.0,
+      "required_level": 2,
+      "gap": 2,
+      "expected_gap": 0,
+      "critical": false
+    }
+  },
+  "invalid_session": 409
+}
